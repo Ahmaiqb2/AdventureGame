@@ -4,12 +4,27 @@ import java.util.Scanner;
 
 public class Adventure {
     public static void main(String[] args) {
-        Room north = new Room("north");
+
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Where do you wanna go?: ");
+        String inputUser = input.nextLine();
+        switch (inputUser) {
+            case "go north", "go n" -> System.out.println("go north");
+            case "go south", "go s" -> System.out.println("go south");
+            case "go east", "go e" -> System.out.println("go east");
+            case "go west", "go w" -> System.out.println("go west");
+
+        }
+
+
+
+        /*Room north = new Room("north");
         Room south = new Room("south");
         Room east = new Room("east");
         Room west = new Room("west");
 
-        Room selectedDirection = null;
+        Room currentRoom = null;
 
         Scanner input = new Scanner(System.in);
 
@@ -24,21 +39,16 @@ public class Adventure {
 
 
             if ( lampe == "go north"){
-                selectedDirection = north;
+                currentRoom = north;
             } else if (lampe == "go south"){
-                selectedDirection = south;
+                currentRoom = south;
             } else if (lampe == "go west"){
-                selectedDirection = east;
+                currentRoom = east;
             } else if (lampe == "go east"){
-                selectedDirection = west;
+                currentRoom = west;
             }
 
-            selectedDirection.direction();
-        }
-    }
-
-    public void keyPressed(){
-
-
+            currentRoom.direction();
+        }*/
     }
 }

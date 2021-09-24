@@ -1,7 +1,14 @@
 package AdventureGame;
 
 public class Room {
-    private boolean toggle;
+    private String name;
+
+
+    public Room(String name){
+        this.name = name;
+    }
+
+    /*private boolean toggle;
     private String name;
 
     public Room(String name) {
@@ -23,5 +30,5 @@ public class Room {
         } else {
             return name + " er slukket";
         }
-    }
+    }*/
 }
