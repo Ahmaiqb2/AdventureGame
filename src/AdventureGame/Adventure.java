@@ -30,7 +30,7 @@ public class Adventure {
             } else if (lampe == "go west"){
                 selectedDirection = east;
             } else if (lampe == "go east"){
-                selectedDirection = lampe4;
+                selectedDirection = west;
             }
 
             selectedDirection.direction();
