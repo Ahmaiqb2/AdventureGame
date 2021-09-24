@@ -1,14 +1,14 @@
 package AdventureGame;
 
-public class Rooms {
+public class Room {
     private boolean toggle;
     private String name;
 
-    public Rooms(String name) {
+    public Room(String name) {
         this.name = name;
     }
 
-    public Rooms() {
+    public Room() {
         this.toggle = false;
     }
 

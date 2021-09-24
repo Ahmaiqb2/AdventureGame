@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class Adventure {
     public static void main(String[] args) {
-        Rooms direction = new Rooms("Lampe 1");
-        Rooms lampe2 = new Rooms("Lampe 2");
-        Rooms lampe3 = new Rooms("Lampe 3");
-        Rooms lampe4 = new Rooms("Lampe 4");
-        Rooms lampe5 = new Rooms("Lampe 5");
-        Rooms selectedDirection = null;
+        Room direction = new Room("Lampe 1");
+        Room lampe2 = new Room("Lampe 2");
+        Room lampe3 = new Room("Lampe 3");
+        Room lampe4 = new Room("Lampe 4");
+        Room lampe5 = new Room("Lampe 5");
+        Room selectedDirection = null;
 
         Scanner input = new Scanner(System.in);
 
@@ -43,4 +43,3 @@ public class Adventure {
 
     }
 }
-
