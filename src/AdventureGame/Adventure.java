@@ -19,7 +19,7 @@ public class Adventure {
             System.out.println(east);
             System.out.println(west);
 
-            System.out.print("\n Hvilken vej vil du? ");
+            System.out.print("\n Hvilken vej vil du vælge at gå? ");
             String lampe = input.nextLine();
 
 
