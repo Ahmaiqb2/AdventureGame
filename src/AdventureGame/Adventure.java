@@ -46,15 +46,15 @@ public class Adventure {
         room6, null, null, room8,*/
 
 
-        Room room1 = new Room("Room 1", true, new String[]{"There is a fridge", "There is a table"});
-        Room room2 = new Room("Room 2", false, new String[]{"There is a table with a pen and a safe"});
-        Room room3 = new Room("Room 3", false, new String[]{"There is a laptop, and a TV-screen connected to a Playstation 3"});
-        Room room4 = new Room("Room 4", false, new String[]{"There is a basketball, and some clothes"});
-        Room room5 = new Room("Room 5", false, new String[]{"There is some keys"});
-        Room room6 = new Room("Room 6", false, new String[]{"Theres is a table with some chips, and biscuits"});
-        Room room7 = new Room("Room 7", false, new String[]{"There is a teddy bear and some toys"});
-        Room room8 = new Room("Room 8", false, new String[]{"There is a table with a spreadsheet on it"});
-        Room room9 = new Room("Room 9", false, new String[]{"There is xx"});
+        Room room1 = new Room("Room 1", true, "There is a fridge and a table");
+        Room room2 = new Room("Room 2", false, "There is a table with a pen and a safe");
+        Room room3 = new Room("Room 3", false, "There is a laptop, and a TV-screen connected to a Playstation 3");
+        Room room4 = new Room("Room 4", false, "There is a basketball, and some clothes");
+        Room room5 = new Room("Room 5", false, "There is some keys");
+        Room room6 = new Room("Room 6", false, "Theres is a table with some chips, and biscuits");
+        Room room7 = new Room("Room 7", false, "There is a teddy bear and some toys");
+        Room room8 = new Room("Room 8", false, "There is a table with a spreadsheet on it");
+        Room room9 = new Room("Room 9", false, "There is xx");
 
 
         room1.setDirections(null, room4, room2, null);
@@ -97,6 +97,7 @@ public class Adventure {
                             rooms[i].setCurrentRoom(false);
                             rooms[i].getNorth().setCurrentRoom(true);
                             System.out.println("You are now in " + rooms[i].getNorth().getName());
+                            System.out.println("Items:" + rooms[i].getNorth().getItem());
                             break;
 
                         }
@@ -115,6 +116,7 @@ public class Adventure {
                             rooms[i].setCurrentRoom(false);
                             rooms[i].getSouth().setCurrentRoom(true);
                             System.out.println("You are now in " + rooms[i].getSouth().getName());
+                            System.out.println("Items: " + rooms[i].getSouth().getItem());
                             break;
                         }
                     }
@@ -131,6 +133,7 @@ public class Adventure {
                             rooms[i].setCurrentRoom(false);
                             rooms[i].getWest().setCurrentRoom(true);
                             System.out.println("You are now in " + rooms[i].getWest().getName());
+                            System.out.println("Items:" + rooms[i].getWest().getItem());
                             break;
                         }
                     }
@@ -147,6 +150,7 @@ public class Adventure {
                             rooms[i].setCurrentRoom(false);
                             rooms[i].getEast().setCurrentRoom(true);
                             System.out.println("You are now in " + rooms[i].getEast().getName());
+                            System.out.println("Items: " + rooms[i].getEast().getItem());
                             break;
                         }
                     }

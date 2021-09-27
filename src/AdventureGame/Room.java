@@ -2,7 +2,7 @@ package AdventureGame;
 
 public class Room {
     private String name;
-    private String[] items = {};
+    private String item;
     private boolean currentRoom;
     private Room north;
     private Room south;
@@ -10,14 +10,14 @@ public class Room {
     private Room west;
 
 
-    public Room(String name, boolean currentRoom, String[] items){ // Constructor - En constructor er en cunstructor når den har det samme navn som en klasse
+    public Room(String name, boolean currentRoom, String items) { // Constructor - En constructor er en cunstructor når den har det samme navn som en klasse
         this.name = name;
         /*this.north = north;
         this.south = south;
         this.east = east;
         this.west = west;*/
         this.currentRoom = currentRoom;
-        this.items = items;
+        this.item = items;
 
     }
 
@@ -25,8 +25,8 @@ public class Room {
         this.name = name;
     }
 
-    public void setItems(String[] items) {
-        this.items = items;
+    public void setItem(String item) {
+        this.item = item;
     }
 
     public void setCurrentRoom(boolean currentRoom) {
@@ -60,8 +60,8 @@ public class Room {
         return name;
     }
 
-    public String[] getItems() {
-        return items;
+    public String getItem() {
+        return item;
     }
 
     public boolean isCurrentRoom() {
@@ -84,13 +84,13 @@ public class Room {
         return west;
     }
 
-    public void look(){
-    System.out.println("You are currently in " + name);
-        for (int i = 0; i < items.length; i++) {
-            System.out.println(items[i]);
-        }
+    public void look() {
+        System.out.println("You are currently in " + name);
 
+        System.out.println(this.item);
     }
+
+}
     /*private boolean toggle;
     private String name;
 
@@ -114,4 +114,4 @@ public class Room {
             return name + " er slukket";
         }
     }*/
-}
+
