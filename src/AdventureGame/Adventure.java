@@ -19,9 +19,11 @@ public class Adventure {
     Room room9;
 
 
+
     public static void main(String[] args) {
         Room[] rooms = new Room[9];
         boolean running = true;
+        int currentRoom = -1;
 
         //Room room1;
         //Room room2;
@@ -82,7 +84,6 @@ public class Adventure {
             System.out.print("Where do you wanna go?: ");
             String inputUser = input.nextLine();
 
-            System.out.println(inputUser);
             if (inputUser.equals("go n") || inputUser.equals("go north")) {
                 System.out.println("Going north");
 
@@ -93,8 +94,8 @@ public class Adventure {
                             System.out.println("You can not go there");
                             break;
                         } else {
-                            System.out.println(rooms[i].getNorth());
                             rooms[i].setCurrentRoom(false);
+                            currentRoom = i;
                             rooms[i].getNorth().setCurrentRoom(true);
                             System.out.println("You are now in " + rooms[i].getNorth().getName());
                             System.out.println("Items:" + rooms[i].getNorth().getItem());
@@ -114,6 +115,7 @@ public class Adventure {
                         } else {
 
                             rooms[i].setCurrentRoom(false);
+                            currentRoom = i;
                             rooms[i].getSouth().setCurrentRoom(true);
                             System.out.println("You are now in " + rooms[i].getSouth().getName());
                             System.out.println("Items: " + rooms[i].getSouth().getItem());
@@ -131,6 +133,7 @@ public class Adventure {
 
                         } else {
                             rooms[i].setCurrentRoom(false);
+                            currentRoom = i;
                             rooms[i].getWest().setCurrentRoom(true);
                             System.out.println("You are now in " + rooms[i].getWest().getName());
                             System.out.println("Items:" + rooms[i].getWest().getItem());
@@ -148,16 +151,30 @@ public class Adventure {
                             break;
                         } else {
                             rooms[i].setCurrentRoom(false);
+                            currentRoom = i;
                             rooms[i].getEast().setCurrentRoom(true);
                             System.out.println("You are now in " + rooms[i].getEast().getName());
-                            System.out.println("Items: " + rooms[i].getEast().getItem());
+                            if (inputUser == "look"){
+                                System.out.println("Items: " + rooms[i].getEast().getItem());
+                            }
                             break;
                         }
                     }
 
                 }
-            } else if (inputUser.equals("look")) {
-                System.out.println();
+            } if (inputUser.equals("look")){
+                System.out.println("You are now in " + rooms[currentRoom].getEast().getName());
+            System.out.println("Items: " + rooms[currentRoom].getEast().getItem());
+            } else if
+                (inputUser.equals("help")){
+                System.out.println("Commands:");
+                System.out.println("Type 'exit' - to quit the qame");
+                System.out.println("Type 'help' - to see the commands you can use");
+                System.out.println("Type 'look' - to see what is inside a room");
+                System.out.println("For controls type 'go east/go north/go south/go west'");
+            }
+            else if (inputUser.equals("exit")){
+                break;
             }
         }
         /*switch (inputUser) {
