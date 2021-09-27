@@ -168,10 +168,10 @@ public class Adventure {
             } else if
                 (inputUser.equals("help")){
                 System.out.println("Commands:");
-                System.out.println("Type 'exit' - to quit the qame");
-                System.out.println("Type 'help' - to see the commands you can use");
-                System.out.println("Type 'look' - to see what is inside a room");
-                System.out.println("For controls type 'go east/go north/go south/go west'");
+                System.out.println("Type 'exit' - to quit the qame.");
+                System.out.println("Type 'help' - to see the commands you can use.");
+                System.out.println("Type 'look' - to see what is inside a room.");
+                System.out.println("For controls type 'go east/go north/go south/go west'.");
             }
             else if (inputUser.equals("exit")){
                 break;
