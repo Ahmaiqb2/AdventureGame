@@ -25,27 +25,6 @@ public class Adventure {
         boolean running = true;
         int currentRoom = -1;
 
-        //Room room1;
-        //Room room2;
-        //Room room3;
-        /*Room room4;
-        Room room5;
-        Room room6;
-        Room room7;
-        Room room8;
-        Room room9;
-        */
-        /*null, room4, room2, null,
-                null, null, room3, room1, false,
-                null, room6, null, room2,
-                room1, room7, null, null,
-                null, room8, null, null,
-                room3, room9, null, null,
-
-                room4, null, room8, null
-
-        room5, null, room9, room7
-        room6, null, null, room8,*/
 
 
         Room room1 = new Room("Room 1", true, "There is a fridge and a table");
@@ -177,46 +156,7 @@ public class Adventure {
                 break;
             }
         }
-        /*switch (inputUser) {
-            case "look" -> room1.look();
-            case "go north", "go n" -> System.out.println("Going north");
-            case "go south", "go s" -> System.out.println("Going south");
-            case "go east", "go e" -> System.out.println("Going east");
-            case "go west", "go w" -> System.out.println("Going west");
-        }*/
 
-
-        /*Room north = new Room("north");
-        Room south = new Room("south");
-        Room east = new Room("east");
-        Room west = new Room("west");
-
-        Room currentRoom = null;
-
-        Scanner input = new Scanner(System.in);
-
-        while(true) {
-            System.out.println(north);
-            System.out.println(south);
-            System.out.println(east);
-            System.out.println(west);
-
-            System.out.print("\n Hvilken vej vil du vælge at gå? ");
-            String lampe = input.nextLine();
-
-
-            if ( lampe == "go north"){
-                currentRoom = north;
-            } else if (lampe == "go south"){
-                currentRoom = south;
-            } else if (lampe == "go west"){
-                currentRoom = east;
-            } else if (lampe == "go east"){
-                currentRoom = west;
-            }
-
-            currentRoom.direction();
-        }*/
     }
 }
 

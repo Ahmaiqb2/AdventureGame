@@ -12,10 +12,6 @@ public class Room {
 
     public Room(String name, boolean currentRoom, String items) { // Constructor - En constructor er en cunstructor når den har det samme navn som en klasse
         this.name = name;
-        /*this.north = north;
-        this.south = south;
-        this.east = east;
-        this.west = west;*/
         this.currentRoom = currentRoom;
         this.item = items;
 
@@ -91,27 +87,3 @@ public class Room {
     }
 
 }
-    /*private boolean toggle;
-    private String name;
-
-    public Room(String name) {
-        this.name = name;
-    }
-
-    public Room() {
-        this.toggle = false;
-    }
-
-    public void direction() {
-        this.toggle = !toggle;
-    }
-
-    @Override
-    public String toString() {
-        if (toggle == true) {
-            return name + " er tændt";
-        } else {
-            return name + " er slukket";
-        }
-    }*/
-
