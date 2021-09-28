@@ -4,26 +4,9 @@ import java.util.Scanner;
 
 public class Adventure {
 
-
-    Room[] rooms = new Room[9];
-
-
-    Room room1;
-    Room room2;
-    Room room3;
-    Room room4;
-    Room room5;
-    Room room6;
-    Room room7;
-    Room room8;
-    Room room9;
-
-
-
     public static void main(String[] args) {
         Room[] rooms = new Room[9];
-        boolean running = true;
-        int currentRoom = -1;
+        int currentRoom = 0;
 
         System.out.println("Welcome to the Adventure Game");
 
@@ -36,7 +19,6 @@ public class Adventure {
         Room room7 = new Room("Room 7", false, "There is a teddy bear and some toys");
         Room room8 = new Room("Room 8", false, "There is a table with a spreadsheet on it");
         Room room9 = new Room("Room 9", false, "There is xx");
-
 
         room1.setDirections(null, room4, room2, null);
         room2.setDirections(null, null, room3, room1);
@@ -58,95 +40,104 @@ public class Adventure {
         rooms[7] = room8;
         rooms[8] = room9;
 
-        while (running) {
+        label:
+        while (true) {
             Scanner input = new Scanner(System.in);
             System.out.print("Where do you wanna go?: ");
             String inputUser = input.nextLine();
 
 
+            switch (inputUser) {
+                case "go n":
+                case "go north":
 
-            if (inputUser.equals("go n") || inputUser.equals("go north")) {
+                    for (int i = 0; i < rooms.length; i++) {
+                        if (rooms[i].isCurrentRoom()) {
+                            if (rooms[i].getNorth() == null) {
+                                System.out.println("You can not go there");
+                            } else {
+                                rooms[i].setCurrentRoom(false);
+                                currentRoom = i;
+                                rooms[i].getNorth().setCurrentRoom(true);
+                                System.out.println("You are now in " + rooms[i].getNorth().getName());
 
-                for (int i = 0; i < rooms.length; i++) {
-                    if (rooms[i].isCurrentRoom() == true) {
-                        if (rooms[i].getNorth() == null) {
-                            System.out.println("You can not go there");
-                            break;
-                        } else {
-                            rooms[i].setCurrentRoom(false);
-                            currentRoom = i;
-                            rooms[i].getNorth().setCurrentRoom(true);
-                            System.out.println("You are now in " + rooms[i].getNorth().getName());
-                            break;
-
-                        }
-                    }
-
-                }
-            } else if (inputUser.equals("go s") || inputUser.equals("go south")) {
-                for (int i = 0; i < rooms.length; i++) {
-                    if (rooms[i].isCurrentRoom() == true) {
-
-                        if (rooms[i].getSouth() == null) {
-                            System.out.println("You can not go there");
-                            break;
-                        } else {
-
-                            rooms[i].setCurrentRoom(false);
-                            currentRoom = i;
-                            rooms[i].getSouth().setCurrentRoom(true);
-                            System.out.println("You are now in " + rooms[i].getSouth().getName());
+                            }
                             break;
                         }
+
                     }
+                    break;
+                case "go s":
+                case "go south":
+                    for (int i = 0; i < rooms.length; i++) {
+                        if (rooms[i].isCurrentRoom()) {
 
-                }
-            } else if (inputUser.equals("go w") || inputUser.equals("go west")) {
-                for (int i = 0; i < rooms.length; i++) {
-                    if (rooms[i].isCurrentRoom() == true) {
+                            if (rooms[i].getSouth() == null) {
+                                System.out.println("You can not go there");
+                            } else {
 
-                        if (rooms[i].getWest() == null) {
-                            System.out.println("You can not go there");
-
-                        } else {
-                            rooms[i].setCurrentRoom(false);
-                            currentRoom = i;
-                            rooms[i].getWest().setCurrentRoom(true);
-                            System.out.println("You are now in " + rooms[i].getWest().getName());
+                                rooms[i].setCurrentRoom(false);
+                                currentRoom = i;
+                                rooms[i].getSouth().setCurrentRoom(true);
+                                System.out.println("You are now in " + rooms[i].getSouth().getName());
+                            }
                             break;
                         }
+
                     }
+                    break;
+                case "go w":
+                case "go west":
+                    for (int i = 0; i < rooms.length; i++) {
+                        if (rooms[i].isCurrentRoom()) {
 
-                }
-            } else if (inputUser.equals("go e") || inputUser.equals("go east")) {
-                for (int i = 0; i < rooms.length; i++) {
-                    if (rooms[i].isCurrentRoom() == true) {
+                            if (rooms[i].getWest() == null) {
+                                System.out.println("You can not go there");
 
-                        if (rooms[i].getEast() == null) {
-                            System.out.println("You can not go there");
-                            break;
-                        } else {
-                            rooms[i].setCurrentRoom(false);
-                            currentRoom = i;
-                            rooms[i].getEast().setCurrentRoom(true);
-                            System.out.println("You are now in " + rooms[i].getEast().getName());
+                            } else {
+                                rooms[i].setCurrentRoom(false);
+                                currentRoom = i;
+                                rooms[i].getWest().setCurrentRoom(true);
+                                System.out.println("You are now in " + rooms[i].getWest().getName());
+                                break;
+                            }
+                        }
+
+                    }
+                    break;
+                case "go e":
+                case "go east":
+                    for (int i = 0; i < rooms.length; i++) {
+                        if (rooms[i].isCurrentRoom()) {
+
+                            if (rooms[i].getEast() == null) {
+                                System.out.println("You can not go there");
+                            } else {
+                                rooms[i].setCurrentRoom(false);
+                                currentRoom = i;
+                                rooms[i].getEast().setCurrentRoom(true);
+                                System.out.println("You are now in " + rooms[i].getEast().getName());
+                            }
                             break;
                         }
-                    }
 
-                }
-            } if (inputUser.equals("look")){
-                System.out.println("You are now in " + rooms[currentRoom].getEast().getName());
-                System.out.println("Items: " + rooms[currentRoom].getEast().getItem());
-            } else if
-                (inputUser.equals("help")){
-                System.out.println("Commands:");
-                System.out.println("For controls type 'go east/go north/go south/go west'.");
-                System.out.println("Type 'look' - to see what is inside a room.");
-                System.out.println("Type 'exit' - to quit the qame.");
+                    }
+                    break;
             }
-            else if (inputUser.equals("exit")){
-                break;
+            switch (inputUser) {
+                case "look":
+                    System.out.println("You are now in " + rooms[currentRoom].getName());
+                    System.out.println("Items: " + rooms[currentRoom].getItem());
+
+                    break;
+                case "help":
+                    System.out.println("Commands:");
+                    System.out.println("For controls type 'go east/go north/go south/go west'.");
+                    System.out.println("Type 'look' - to see what is inside a room.");
+                    System.out.println("Type 'exit' - to quit the game.");
+                    break;
+                case "exit":
+                    break label;
             }
         }
 
