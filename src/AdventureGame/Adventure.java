@@ -1,5 +1,6 @@
 package AdventureGame;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Adventure {
@@ -7,6 +8,41 @@ public class Adventure {
     public static void main(String[] args) {
         Room[] rooms = new Room[9];
         int currentRoom = 0;
+        Item fridge = new Item("Fridge", "White fridge");
+        Item table = new Item("Table", "Small table");
+        Item pen = new Item("Pen", "Black pen");
+        Item safe = new Item("Safe", "Grey safe made of steel");
+        Item laptop = new Item("Laptop", "Asus latop");
+        Item TV = new Item("TV", "Samsung TV");
+        Item ps3 = new Item("Playstation", "Playstation 3");
+        Item basketball = new Item("Basketball", "Dusty basketball");
+        Item clothes = new Item("Clothes", "old clothes");
+        Item keys = new Item("Keys", "some keys");
+        Item chips = new Item("Chips", "Lays sour-cream&onion chips");
+        Item biscuits = new Item("Biscuits", "biscuits");
+        Item teddybear = new Item("Teddy bear", "Big fat teddy-bear");
+        Item toys = new Item("Toys", "Kids toys");
+        Item spreadsheet = new Item("Spreadsheet", "blank spreadsheet");
+        /*
+        room1Liste.add(fridge);
+        room1Liste.add(table);
+        room2Liste.add(pen);
+        room2Liste.add(safe);
+        room3Liste.add(laptop);
+        room3Liste.add(TV);
+        room3Liste.add(ps3);
+        room4Liste.add(basketball);
+        room4Liste.add(clothes);
+        room5Liste.add(keys);
+        room6Liste.add(chips);
+        room6Liste.add(biscuits);
+        room7Liste.add(teddybear);
+        room7Liste.add(toys);
+        room8Liste.add(spreadsheet);
+     */
+
+
+
 
         System.out.println("Welcome to the Adventure Game");
 
@@ -18,7 +54,23 @@ public class Adventure {
         Room room6 = new Room("Room 6", false, "Theres is a table with some chips, and biscuits");
         Room room7 = new Room("Room 7", false, "There is a teddy bear and some toys");
         Room room8 = new Room("Room 8", false, "There is a table with a spreadsheet on it");
-        Room room9 = new Room("Room 9", false, "There is xx");
+        Room room9 = new Room("Room 9", false, "The room is empty");
+
+        room1.addItem(fridge);
+        room1.addItem(table);
+        room2.addItem(pen);
+        room2.addItem(safe);
+        room3.addItem(laptop);
+        room3.addItem(TV);
+        room4.addItem(basketball);
+        room4.addItem(clothes);
+        room5.addItem(keys);
+        room6.addItem(chips);
+        room6.addItem(biscuits);
+        room7.addItem(teddybear);
+        room7.addItem(toys);
+        room8.addItem(spreadsheet);
+
 
         room1.setDirections(null, room4, room2, null);
         room2.setDirections(null, null, room3, room1);
@@ -56,6 +108,7 @@ public class Adventure {
                             if (rooms[i].getNorth() == null) {
                                 System.out.println("You can not go there");
                             } else {
+                                System.out.println("Going north");
                                 rooms[i].setCurrentRoom(false);
                                 currentRoom = i;
                                 rooms[i].getNorth().setCurrentRoom(true);
@@ -75,7 +128,7 @@ public class Adventure {
                             if (rooms[i].getSouth() == null) {
                                 System.out.println("You can not go there");
                             } else {
-
+                                System.out.println("Going south");
                                 rooms[i].setCurrentRoom(false);
                                 currentRoom = i;
                                 rooms[i].getSouth().setCurrentRoom(true);
@@ -95,6 +148,7 @@ public class Adventure {
                                 System.out.println("You can not go there");
 
                             } else {
+                                System.out.println("Going west");
                                 rooms[i].setCurrentRoom(false);
                                 currentRoom = i;
                                 rooms[i].getWest().setCurrentRoom(true);
@@ -113,6 +167,7 @@ public class Adventure {
                             if (rooms[i].getEast() == null) {
                                 System.out.println("You can not go there");
                             } else {
+                                System.out.println("Going east");
                                 rooms[i].setCurrentRoom(false);
                                 currentRoom = i;
                                 rooms[i].getEast().setCurrentRoom(true);
@@ -123,6 +178,11 @@ public class Adventure {
 
                     }
                     break;
+            }
+            if (inputUser.startsWith("take")){
+                String itemName = inputUser.substring(inputUser.indexOf(" ") + 1);
+                //Jeg skal lave et player objekt, og en metode der tager items fra rum og fjerner items fra rummet efterfølgende.
+                //Jeg skal lave en metode der tjekker hvad der indeholder i rummet
             }
             switch (inputUser) {
                 case "look":
