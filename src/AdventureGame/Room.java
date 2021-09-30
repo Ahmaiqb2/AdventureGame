@@ -12,20 +12,11 @@ public class Room {
     private Room west;
     private ArrayList<Item> itemsListe = new ArrayList<>();
 
-
-
     public Room(String name, boolean currentRoom, String items, ArrayList<Item> itemListe) { // Constructor - En constructor er en cunstructor når den har det samme navn som en klasse
         this.name = name;
         this.currentRoom = currentRoom;
         this.item = items;
         this.itemsListe = itemListe;
-
-    }
-
-    public Room(String name, boolean currentRoom, String items) { // Constructor - En constructor er en cunstructor når den har det samme navn som en klasse
-        this.name = name;
-        this.currentRoom = currentRoom;
-        this.item = items;
 
     }
 
@@ -36,9 +27,9 @@ public class Room {
     public void setItem(String item) {
         this.item = item;
     }
-    
-public void addItem(Item item){
-itemsListe.add(item);
+
+    public void addItem(Item item){
+    itemsListe.add(item);
 }
 
     public void setCurrentRoom(boolean currentRoom) {
@@ -68,15 +59,17 @@ itemsListe.add(item);
         this.west = west;
     }
 
-    public void findItem
+    public void findItem(){
 
+    }
+
+    public void addItem(){
+
+    }
 
     public String getName() {
         return name;
     }
-
-    public void addItem()
-
 
     public String getItem() {
         return item;
@@ -85,6 +78,53 @@ itemsListe.add(item);
     public boolean isCurrentRoom() {
         return currentRoom;
     }
+
+    public Room getNorth(){
+        return north;
+    }
+
+    public Room getSouth(){
+        return south;
+    }
+
+    public Room getEast(){
+        return east;
+    }
+
+    public Room getWest(){
+        return north;
+    }
+
+}
+
+
+/*private String name;
+private String currentRoom;
+private Room north;
+private Room south;
+private Room east;
+private Room west;
+
+public Room(String name, String currentRoom) { // Constructor - En constructor er en cunstructor når den har det samme navn som en klasse
+        this.name = name;
+        this.currentRoom = currentRoom;
+        }
+
+public Room getNorth() {
+        return north;
+        }
+
+public void setNorth(Room north) {
+        this.north = north;
+        }
+
+public Room getSouth() {
+        return south;
+        }
+
+public void setSouth(Room south) {
+        this.south = south;
+        }
 
     public Room getNorth() {
         return north;
@@ -104,9 +144,29 @@ itemsListe.add(item);
 
     public void look() {
         System.out.println("You are currently in " + name);
-
         System.out.println(this.item);
+
     }
 
 
-}
+public Room getEast() {
+        return east;
+        }
+
+public void setEast(Room east) {
+        this.east = east;
+        }
+
+public Room getWest() {
+        return west;
+        }
+
+public void setWest(Room west) {
+        this.west = west;
+        }
+
+public String look() {
+        String result = "You are currently in " + name + "\n";
+        result += currentRoom;
+        return result;
+        }*/
