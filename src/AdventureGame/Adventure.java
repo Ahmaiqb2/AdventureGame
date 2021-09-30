@@ -6,6 +6,9 @@ import java.util.Scanner;
 public class Adventure {
 
     public static void main(String[] args) {
+        Room[] rooms = new Room[9];
+        ArrayList<Item> items = new ArrayList<>();
+        int currentRoom = 0;
 
         Item fridge = new Item("Fridge", "White fridge");
         Item table = new Item("Table", "Small table");
@@ -61,6 +64,7 @@ public class Adventure {
         room2.addItem(safe);
         room3.addItem(laptop);
         room3.addItem(TV);
+        room3.addItem(ps3);
         room4.addItem(basketball);
         room4.addItem(clothes);
         room5.addItem(keys);
@@ -185,8 +189,11 @@ public class Adventure {
             }
             switch (inputUser) {
                 case "look":
-                    System.out.println("You are now in " + rooms[currentRoom].getName());
-                    System.out.println("Items: " + rooms[currentRoom].getItem());
+                    System.out.println("Description of room: " + rooms[currentRoom].getItem());
+                    for (Item item : rooms[currentRoom].getItemsListe()) {
+                        System.out.println(item.getitemDescription());
+                    }
+                    //System.out.println("Items: " + rooms[currentRoom].getItemsListe().toString());
 
                     break;
                 case "help":

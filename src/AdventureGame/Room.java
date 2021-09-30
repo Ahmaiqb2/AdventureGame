@@ -12,11 +12,11 @@ public class Room {
     private Room west;
     private ArrayList<Item> itemsListe = new ArrayList<>();
 
-    public Room(String name, boolean currentRoom, String items, ArrayList<Item> itemListe) { // Constructor - En constructor er en cunstructor når den har det samme navn som en klasse
+    public Room(String name, boolean currentRoom, String items) { // Constructor - En constructor er en cunstructor når den har det samme navn som en klasse
         this.name = name;
         this.currentRoom = currentRoom;
         this.item = items;
-        this.itemsListe = itemListe;
+        //this.itemsListe = itemListe;
 
     }
 
@@ -65,6 +65,11 @@ public class Room {
 
     public void addItem(){
 
+    }
+
+    public ArrayList<Item> getItemsListe() {
+
+        return itemsListe;
     }
 
     public String getName() {
