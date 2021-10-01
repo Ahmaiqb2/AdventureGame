@@ -1,12 +1,11 @@
 package AdventureGame;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Player {
 
     public Room currentRoom;
-    private Room requestedRoom;
+    private ArrayList<Item> inventory = new ArrayList<>();
 
     public Player() {
         this.currentRoom = currentRoom;
@@ -31,18 +30,26 @@ public class Player {
         return result;
     }
 
-    public boolean changeRoom(String direction) {
-        switch (direction) {
-            case "N" -> requestedRoom = this.currentRoom.getNorth();
-            case "E" -> requestedRoom = this.currentRoom.getEast();
-            case "S" -> requestedRoom = this.currentRoom.getSouth();
-            case "W" -> requestedRoom = this.currentRoom.getWest();
-        }
-        if (requestedRoom != null) {
-            this.currentRoom = requestedRoom;
-            return true;
-        }
+    public ArrayList<Item> getInventory(){
+        return inventory;
+    }
+
+    public boolean take(String item){
+        Item item1 = findItem(item);
+        inventory.add(item1);
         return false;
+    }
+
+    public Item findItem(String itemName) {
+        String requestedItem = "";
+        for (int i = 0; i < currentRoom.itemsListe.size(); i++) {
+            Item item = null;
+            requestedItem = currentRoom.itemsListe.get(i).getItemName();
+            if (requestedItem.equals(itemName)) {
+                item = currentRoom.itemsListe.get(i);
+            }
+        }
+        return null;
     }
 }
 
