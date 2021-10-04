@@ -30,6 +30,9 @@ public class Room {
     public void addItem(Item item){
         itemsListe.add(item);
     }
+    public void dropItem(Item item){
+        itemsListe.remove(item);
+    }
 
     public void setCurrentRoom(boolean currentRoom) {
         this.currentRoom = currentRoom;

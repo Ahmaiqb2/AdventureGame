@@ -43,6 +43,10 @@ public class Player {
         inventory.add(item);
     }
 
+    public void removeFromInventory(Item item){
+        inventory.remove(item);
+    }
+
     public boolean changeRoom(String direction) {
         switch (direction) {
             case "N" -> requestedRoom = this.currentRoom.getNorth();

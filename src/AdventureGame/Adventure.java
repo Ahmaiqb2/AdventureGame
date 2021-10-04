@@ -192,7 +192,7 @@ public class Adventure {
                     }
                     break;
             }
-            if (inputUser.startsWith("take")){
+            if (inputUser.startsWith("take")) {
                 String itemName = inputUser.substring(inputUser.indexOf(" ") + 1);
                 //System.out.println(player.take(itemName));
                 //Jeg skal lave et player objekt, og en metode der tager items fra rum og fjerner items fra rummet efterfølgende.
@@ -205,15 +205,30 @@ public class Adventure {
                     for (Item item : rooms[currentRoom].getItemsListe()) {
                         System.out.println(item.getitemDescription());
                     }
+                    break;
+
+                case "take":
                     System.out.println("Which item do you want to pick up?");
                     String itemInput = input.nextLine();
-                    for (Item item : rooms[currentRoom].getItemsListe()){
-                        if (itemInput.equalsIgnoreCase(item.getitemDescription())){
+                    for (Item item : rooms[currentRoom].getItemsListe()) {
+                        if (itemInput.equalsIgnoreCase(item.getitemDescription())) {
                             player.addToInventory(item);
                             System.out.println("You have selcted this item " + item.getitemDescription());
                         }
                     }
                     break;
+                case "drop":
+                    System.out.println("Which item do you want to drop");
+                    String itemRemoveInput = input.nextLine();
+                    for (Item item : rooms[currentRoom].getItemsListe()) {
+                        if (itemRemoveInput.equalsIgnoreCase(item.getitemDescription())) {
+                            player.removeFromInventory(item);
+                            System.out.println("You have dropped this item " + item.getitemDescription());
+                        }
+                    }
+                    break;
+
+
                 case "help":
                 case "h":
                     Commands.help();
