@@ -215,8 +215,11 @@ public class Adventure {
                             player.addToInventory(item);
                             System.out.println("You have selcted this item " + item.getitemDescription());
                         }
+                        break;
                     }
                     break;
+
+
                 case "drop":
                     System.out.println("Which item do you want to drop");
                     String itemRemoveInput = input.nextLine();
@@ -225,6 +228,7 @@ public class Adventure {
                             player.removeFromInventory(item);
                             System.out.println("You have dropped this item " + item.getitemDescription());
                         }
+                        break;
                     }
                     break;
 
@@ -240,6 +244,7 @@ public class Adventure {
                 case "inventory":
                 case "i":
                     player.getInventory();
+                    break;
             }
         }
     }
