@@ -7,6 +7,8 @@ public class Player {
 
     public Room currentRoom;
     private Room requestedRoom;
+    private ArrayList<Item> inventory = new ArrayList<>();
+
 
     public Player() {
         this.currentRoom = currentRoom;
@@ -29,6 +31,10 @@ public class Player {
             result = "w";
         }
         return result;
+    }
+
+    public ArrayList<Item> getInventory() {
+        return inventory;
     }
 
     public boolean changeRoom(String direction) {
