@@ -243,7 +243,7 @@ public class Adventure {
 
                 case "inventory":
                 case "i":
-                    player.getInventory();
+                   player.getInventory();
                     break;
             }
         }

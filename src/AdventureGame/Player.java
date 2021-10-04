@@ -33,9 +33,14 @@ public class Player {
     }
 
     public void getInventory() {
-        for(Item item: inventory){
-            System.out.println(item.getItemName());
+        if (inventory.isEmpty()){
+            System.out.println("Tom taske");
+        } else{
+            for(Item item: inventory){
+                System.out.println(item.getItemName());
+            }
         }
+
     }
 
     public void addToInventory(Item item){
