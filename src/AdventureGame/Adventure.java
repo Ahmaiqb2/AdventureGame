@@ -194,7 +194,7 @@ public class Adventure {
             }
             if (inputUser.startsWith("take")){
                 String itemName = inputUser.substring(inputUser.indexOf(" ") + 1);
-                System.out.println(player.take(itemName));
+                //System.out.println(player.take(itemName));
                 //Jeg skal lave et player objekt, og en metode der tager items fra rum og fjerner items fra rummet efterfølgende.
                 //Jeg skal lave en metode der tjekker hvad der indeholder i rummet
             }
@@ -227,8 +227,8 @@ public class Adventure {
 
                 case "inventory":
                 case "i":
-                    ArrayList<Item> inventory = player.getInventory();
-                    System.out.println(inventory);
+                    //ArrayList<Item> inventory = player.getInventory();
+                    //System.out.println(inventory);
             }
         }
     }
