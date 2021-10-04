@@ -3,6 +3,7 @@ package AdventureGame;
 import java.util.ArrayList;
 
 public class Room {
+    private String roomDescription;
     private String name;
     private String item;
     private boolean currentRoom;
@@ -12,11 +13,10 @@ public class Room {
     private Room west;
     public ArrayList<Item> itemsListe = new ArrayList<>();
 
-    public Room(String name, boolean currentRoom, String items, ArrayList<Item> itemListe) { // Constructor - En constructor er en cunstructor når den har det samme navn som en klasse
+    public Room(String name, boolean currentRoom, String roomDescription) { // Constructor - En constructor er en cunstructor når den har det samme navn som en klasse
         this.name = name;
         this.currentRoom = currentRoom;
-        this.item = items;
-        this.itemsListe = itemListe;
+        this.roomDescription = roomDescription;
     }
 
     public void setName(String name) {
@@ -78,8 +78,8 @@ public class Room {
         return name;
     }
 
-    public String getItem() {
-        return item;
+    public String getRoomDescription() {
+        return roomDescription;
     }
 
     public boolean isCurrentRoom() {

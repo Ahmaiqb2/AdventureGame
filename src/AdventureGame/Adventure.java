@@ -1,6 +1,5 @@
 package AdventureGame;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Adventure {
@@ -9,18 +8,6 @@ public class Adventure {
         Room[] rooms = new Room[9];
         Player player = new Player();
         int currentRoom = 0;
-        Item selectedItem;
-
-        ArrayList<Item> items1 = new ArrayList<>();
-        ArrayList<Item> items2 = new ArrayList<>();
-        ArrayList<Item> items3 = new ArrayList<>();
-        ArrayList<Item> items4 = new ArrayList<>();
-        ArrayList<Item> items5 = new ArrayList<>();
-        ArrayList<Item> items6 = new ArrayList<>();
-        ArrayList<Item> items7 = new ArrayList<>();
-        ArrayList<Item> items8 = new ArrayList<>();
-        ArrayList<Item> items9 = new ArrayList<>();
-
 
         Item fridge = new Item("Fridge", "White fridge");
         Item table = new Item("Table", "Small table");
@@ -58,15 +45,15 @@ public class Adventure {
 
         System.out.println("Welcome to the Adventure Game");
 
-        Room room1 = new Room("Room 1", true, "There is a fridge and a table", items1);
-        Room room2 = new Room("Room 2", false, "There is a table with a pen and a safe", items2);
-        Room room3 = new Room("Room 3", false, "There is a laptop, and a TV-screen connected to a Playstation 3", items3);
-        Room room4 = new Room("Room 4", false, "There is a basketball, and some clothes", items4);
-        Room room5 = new Room("Room 5", false, "There is some keys", items5);
-        Room room6 = new Room("Room 6", false, "Theres is a table with some chips, and biscuits", items6);
-        Room room7 = new Room("Room 7", false, "There is a teddy bear and some toys", items7);
-        Room room8 = new Room("Room 8", false, "There is a table with a spreadsheet on it", items8);
-        Room room9 = new Room("Room 9", false, "The room is empty", items9);
+        Room room1 = new Room("Room 1", true, "kicthen");
+        Room room2 = new Room("Room 2", false, "School");
+        Room room3 = new Room("Room 3", false, "xxx");
+        Room room4 = new Room("Room 4", false,"xxx");
+        Room room5 = new Room("Room 5", false, "xxx");
+        Room room6 = new Room("Room 6", false, "xxx");
+        Room room7 = new Room("Room 7", false, "xxx");
+        Room room8 = new Room("Room 8", false, "xxx");
+        Room room9 = new Room("Room 9", false,"xxx");
 
         room1.addItem(fridge);
         room1.addItem(table);
@@ -201,7 +188,7 @@ public class Adventure {
             switch (inputUser) {
                 case "look":
                 case "l":
-                    System.out.println("Description of room: " + rooms[currentRoom].getItem());
+                    System.out.println("Description of room: " + rooms[currentRoom].getRoomDescription());
                     for (Item item : rooms[currentRoom].getItemsListe()) {
                         System.out.println(item.getitemDescription());
                     }
