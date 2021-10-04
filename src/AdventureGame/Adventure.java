@@ -9,6 +9,7 @@ public class Adventure {
         Room[] rooms = new Room[9];
         ArrayList<Item> items = new ArrayList<>();
         int currentRoom = 0;
+        Item selectedItem;
 
         Item fridge = new Item("Fridge", "White fridge");
         Item table = new Item("Table", "Small table");
@@ -193,8 +194,14 @@ public class Adventure {
                     for (Item item : rooms[currentRoom].getItemsListe()) {
                         System.out.println(item.getitemDescription());
                     }
-                    //System.out.println("Items: " + rooms[currentRoom].getItemsListe().toString());
-
+                    System.out.println("Which item do you want to pick up?");
+                    String itemInput = input.nextLine();
+                    for (Item item : rooms[currentRoom].getItemsListe()){
+                        if (itemInput.equalsIgnoreCase(item.getitemDescription())){
+                            selectedItem = item;
+                            System.out.println("You have selcted this item " + selectedItem.getitemDescription());
+                        }
+                    }
                     break;
                 case "help":
                     System.out.println("Commands:");

@@ -7,13 +7,15 @@ public class Player {
 
     public Room currentRoom;
     private Room requestedRoom;
+    private Item item1;
 
     public Player() {
         this.currentRoom = currentRoom;
+
     }
 
     public Room playerLocation(Room currentLocation) {
-        return this.currentRoom= currentLocation;
+        return this.currentRoom = currentLocation;
     }
 
     public String waysToGo(String direction) {
@@ -43,8 +45,23 @@ public class Player {
             return true;
         }
         return false;
+
+
+    }
+
+
+    public Item getItem() {
+        return item1;
+
+    }
+    public void setItem(Item item){
+        item1 = item;
     }
 }
+
+
+
+
 
 
 
