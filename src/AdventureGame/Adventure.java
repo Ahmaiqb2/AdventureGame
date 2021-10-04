@@ -210,6 +210,7 @@ public class Adventure {
                     for (Item item : rooms[currentRoom].getItemsListe()){
                         if (itemInput.equalsIgnoreCase(item.getitemDescription())){
                             selectedItem = item;
+                            player.getInventory(selectedItem);
                             System.out.println("You have selcted this item " + selectedItem.getitemDescription());
                         }
                     }
@@ -227,8 +228,7 @@ public class Adventure {
 
                 case "inventory":
                 case "i":
-                    //ArrayList<Item> inventory = player.getInventory();
-                    //System.out.println(inventory);
+
             }
         }
     }
