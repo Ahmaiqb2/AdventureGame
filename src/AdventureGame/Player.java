@@ -33,8 +33,14 @@ public class Player {
         return result;
     }
 
-    public ArrayList<Item> getInventory() {
-        return inventory;
+    public void getInventory() {
+        for(Item item: inventory){
+            System.out.println(item.getItemName());
+        }
+    }
+
+    public void addToInventory(Item item){
+        inventory.add(item);
     }
 
     public boolean changeRoom(String direction) {

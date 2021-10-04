@@ -209,18 +209,14 @@ public class Adventure {
                     String itemInput = input.nextLine();
                     for (Item item : rooms[currentRoom].getItemsListe()){
                         if (itemInput.equalsIgnoreCase(item.getitemDescription())){
-                            selectedItem = item;
-                            player.getInventory();
-                            System.out.println("You have selcted this item " + selectedItem.getitemDescription());
+                            player.addToInventory(item);
+                            System.out.println("You have selcted this item " + item.getitemDescription());
                         }
                     }
                     break;
                 case "help":
                 case "h":
-                    System.out.println("Commands:");
-                    System.out.println("For controls type 'go east/go north/go south/go west'.");
-                    System.out.println("Type 'look' - to see what is inside a room.");
-                    System.out.println("Type 'exit' - to quit the game.");
+                    Commands.help();
                     break;
                 case "exit":
                     System.out.println("Quitting the game");
@@ -228,8 +224,7 @@ public class Adventure {
 
                 case "inventory":
                 case "i":
-                    ArrayList<Item> inventory = player.getInventory();
-                    System.out.println(inventory);
+                    player.getInventory();
             }
         }
     }

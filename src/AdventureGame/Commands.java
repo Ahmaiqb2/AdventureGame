@@ -12,10 +12,10 @@ public class Commands {
     public static String help() {
         String help = "";
 
-        help += "Commands: \n";
-        help += " For controls type 'go east/go north/go south/go west'. \n";
-        help += " Type 'look' - to get the room description. \n";
-        help += " Type 'exit' - to quit the game. \n";
+        System.out.println("Commands: \n");
+        System.out.println(" For controls type 'go east/go north/go south/go west'. \n");
+        System.out.println(" Type 'look' - to get the room description. \n");
+        System.out.println(" Type 'exit' - to quit the game. \n");
 
         return help;
     }

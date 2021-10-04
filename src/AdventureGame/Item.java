@@ -14,4 +14,7 @@ public Item(String itemName, String itemDescription){
     public String getitemDescription() {
         return itemDescription;
     }
+    public String getItemName(){
+    return itemName;
+    }
 }
