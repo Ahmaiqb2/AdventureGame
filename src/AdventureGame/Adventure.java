@@ -48,12 +48,12 @@ public class Adventure {
         Room room1 = new Room("Room 1", true, "kicthen");
         Room room2 = new Room("Room 2", false, "School");
         Room room3 = new Room("Room 3", false, "xxx");
-        Room room4 = new Room("Room 4", false,"xxx");
+        Room room4 = new Room("Room 4", false, "xxx");
         Room room5 = new Room("Room 5", false, "xxx");
         Room room6 = new Room("Room 6", false, "xxx");
         Room room7 = new Room("Room 7", false, "xxx");
         Room room8 = new Room("Room 8", false, "xxx");
-        Room room9 = new Room("Room 9", false,"xxx");
+        Room room9 = new Room("Room 9", false, "xxx");
 
         room1.addItem(fridge);
         room1.addItem(table);
@@ -95,7 +95,7 @@ public class Adventure {
         label:
         while (true) {
             Scanner input = new Scanner(System.in);
-            System.out.print("Where do you wanna go?: ");
+            System.out.print("What do you want to do?: ");
             String inputUser = input.nextLine();
 
 
@@ -179,12 +179,7 @@ public class Adventure {
                     }
                     break;
             }
-            if (inputUser.startsWith("take")) {
-                String itemName = inputUser.substring(inputUser.indexOf(" ") + 1);
-                //System.out.println(player.take(itemName));
-                //Jeg skal lave et player objekt, og en metode der tager items fra rum og fjerner items fra rummet efterfølgende.
-                //Jeg skal lave en metode der tjekker hvad der indeholder i rummet
-            }
+
             switch (inputUser) {
                 case "look":
                 case "l":
@@ -230,7 +225,7 @@ public class Adventure {
 
                 case "inventory":
                 case "i":
-                   player.getInventory();
+                    player.getInventory();
                     break;
             }
         }
