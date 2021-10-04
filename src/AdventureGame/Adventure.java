@@ -45,13 +45,13 @@ public class Adventure {
 
         System.out.println("Welcome to the Adventure Game");
 
-        Room room1 = new Room("Room 1", true, "kicthen");
-        Room room2 = new Room("Room 2", false, "School");
-        Room room3 = new Room("Room 3", false, "xxx");
-        Room room4 = new Room("Room 4", false, "xxx");
-        Room room5 = new Room("Room 5", false, "xxx");
-        Room room6 = new Room("Room 6", false, "xxx");
-        Room room7 = new Room("Room 7", false, "xxx");
+        Room room1 = new Room("Room 1", true, "Cellar: The room is very tiny and has no light");
+        Room room2 = new Room("Room 2", false, "Kitchen: Dusty and bankrupt room with a old white fridge and a small table with some musty food on it ");
+        Room room3 = new Room("Room 3", false, "Bedroom: White walls with a TV-screen wired to a Playstation - A laptop laying on a desk  ");
+        Room room4 = new Room("Room 4", false, "Boys' room: White walls with paintings of basketball-stars/Open wardrobe with clothes in it ");
+        Room room5 = new Room("Room 5", false, "Mysterious room: Open cabinet with keys inside");
+        Room room6 = new Room("Room 6", false, "Messy room with an unopened bag of chips and biscuits laying on the floor ");
+        Room room7 = new Room("Room 7", false, "Kids room: Big teddybear in the corner and some toys laying next to it");
         Room room8 = new Room("Room 8", false, "xxx");
         Room room9 = new Room("Room 9", false, "xxx");
 
@@ -127,6 +127,7 @@ public class Adventure {
 
                             if (rooms[i].getSouth() == null) {
                                 System.out.println("You can not go there");
+
                             } else {
                                 System.out.println("Going south");
                                 rooms[i].setCurrentRoom(false);
@@ -185,7 +186,7 @@ public class Adventure {
                 case "l":
                     System.out.println("Description of room: " + rooms[currentRoom].getRoomDescription());
                     for (Item item : rooms[currentRoom].getItemsListe()) {
-                        System.out.println(item.getitemDescription());
+                        System.out.println(item.getItemName());
                     }
                     break;
 
@@ -193,9 +194,9 @@ public class Adventure {
                     System.out.println("Which item do you want to pick up?");
                     String itemInput = input.nextLine();
                     for (Item item : rooms[currentRoom].getItemsListe()) {
-                        if (itemInput.equalsIgnoreCase(item.getitemDescription())) {
+                        if (itemInput.equalsIgnoreCase(item.getItemName())) {
                             player.addToInventory(item);
-                            System.out.println("You have selcted this item " + item.getitemDescription());
+                            System.out.println("You have selected this item " + item.getItemName());
                         }
                         break;
                     }
@@ -206,9 +207,9 @@ public class Adventure {
                     System.out.println("Which item do you want to drop");
                     String itemRemoveInput = input.nextLine();
                     for (Item item : rooms[currentRoom].getItemsListe()) {
-                        if (itemRemoveInput.equalsIgnoreCase(item.getitemDescription())) {
+                        if (itemRemoveInput.equalsIgnoreCase(item.getItemName())) {
                             player.removeFromInventory(item);
-                            System.out.println("You have dropped this item " + item.getitemDescription());
+                            System.out.println("You have dropped this item " + item.getItemName());
                         }
                         break;
                     }

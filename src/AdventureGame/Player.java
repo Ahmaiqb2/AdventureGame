@@ -34,7 +34,7 @@ public class Player {
 
     public void getInventory() {
         if (inventory.isEmpty()){
-            System.out.println("Tom taske");
+            System.out.println("Your backpack is empty");
         } else{
             for(Item item: inventory){
                 System.out.println(item.getItemName());
