@@ -230,7 +230,10 @@ public class Adventure {
                     break;
 
                 default:
-                    System.out.println("Dont know what that mean, please try again!\n" + "If u need help, enter: help!\n");
+                    System.out.println("""
+                            Dont know what that mean, please try again!
+                            If u need help, enter: help!
+                            """);
                     break;
             }
         }
