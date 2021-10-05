@@ -9,21 +9,21 @@ public class Adventure {
         Player player = new Player();
         int currentRoom = 0;
 
-        Item fridge = new Item("Fridge", "White fridge");
-        Item table = new Item("Table", "Small table");
-        Item pen = new Item("Pen", "Black pen");
-        Item safe = new Item("Safe", "Grey safe made of steel");
-        Item laptop = new Item("Laptop", "Asus latop");
-        Item TV = new Item("TV", "Samsung TV");
-        Item ps3 = new Item("Playstation", "Playstation 3");
-        Item basketball = new Item("Basketball", "Dusty basketball");
-        Item clothes = new Item("Clothes", "old clothes");
-        Item keys = new Item("Keys", "some keys");
-        Item chips = new Item("Chips", "Lays sour-cream&onion chips");
-        Item biscuits = new Item("Biscuits", "biscuits");
-        Item teddybear = new Item("Teddy bear", "Big fat teddy-bear");
-        Item toys = new Item("Toys", "Kids toys");
-        Item spreadsheet = new Item("Spreadsheet", "blank spreadsheet");
+        Item fridge = new Item("Fridge", "White fridge", 7);
+        Item table = new Item("Table", "Small table", 5);
+        Item pen = new Item("Pen", "Black pen", 1);
+        Item safe = new Item("Safe", "Grey safe made of steel", 3);
+        Item laptop = new Item("Laptop", "Asus latop", 2);
+        Item TV = new Item("TV", "Samsung TV", 3);
+        Item ps3 = new Item("Playstation", "Playstation 3", 3);
+        Item basketball = new Item("Basketball", "Dusty basketball", 2);
+        Item clothes = new Item("Clothes", "old clothes", 2);
+        Item keys = new Item("Keys", "some keys", 1);
+        Item chips = new Item("Chips", "Lays sour-cream&onion chips", 1);
+        Item biscuits = new Item("Biscuits", "biscuits", 1);
+        Item teddybear = new Item("Teddy bear", "Big fat teddy-bear", 2);
+        Item toys = new Item("Toys", "Kids toys", 1);
+        Item spreadsheet = new Item("Spreadsheet", "blank spreadsheet", 1);
         /*
         room1Liste.add(fridge);
         room1Liste.add(table);
@@ -232,7 +232,7 @@ public class Adventure {
                 default:
                     System.out.println("""
                             Dont know what that mean, please try again!
-                            If u need help, enter: help!
+                            If u need help, enter: 'help/h'
                             """);
                     break;
             }
