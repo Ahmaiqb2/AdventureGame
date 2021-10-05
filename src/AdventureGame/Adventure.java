@@ -217,11 +217,11 @@ public class Adventure {
                 case "help":
                 case "h":
                     Commands.help();
-                    System.out.println("\n");
                     break;
+
                 case "exit":
-                    System.out.println("Quitting the game");
-                    break label;
+                    Commands.exit();
+                    break;
 
                 case "inventory":
                 case "i":

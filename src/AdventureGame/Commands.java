@@ -2,29 +2,35 @@ package AdventureGame;
 
 public class Commands {
 
+    private static Room[] rooms;
+
     public Commands(){
     }
 
-    public static String look() {
-        return look();
+    public static void look() {
+        int currentRoom = 0;
+        System.out.println("Description of room: " + rooms[currentRoom].getRoomDescription() + "\n");
+        for (Item item : rooms[currentRoom].getItemsListe()) {
+            System.out.println(item.getItemName() + "\n");
+        }
     }
 
-    public static String help() {
-        String help = "";
+    public static void help() {
 
-        System.out.println("Commands: \n");
-        System.out.println(" For controls type 'go east/go north/go south/go west'. \n");
-        System.out.println(" Type 'look' - to get the room description. \n");
-        System.out.println(" Type 'take' - to pick up an item. \n");
-        System.out.println(" Type 'drop' - to drop up an item. \n");
-        System.out.println(" Type 'inventory - to see your inventory. \n");
-        System.out.println(" Type 'help - to see commands available. \n");
-        System.out.println(" Type 'exit' - to quit the game. \n");
-
-        return help;
+        System.out.println("""
+               
+                Commands:
+                    For controls type 'go east/go north/go south/go west'.
+                    Type 'look' - to get the room description.
+                    Type 'take' - to pick up an item.
+                    Type 'drop' - to drop up an item.
+                    Type 'inventory - to see your inventory.
+                    Type 'exit' - to quit the game.
+                """);
     }
 
     public static void exit() {
+        System.out.println("Qutting game");
         System.exit(0);
     }
 }
