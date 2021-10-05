@@ -95,7 +95,7 @@ public class Adventure {
         label:
         while (true) {
             Scanner input = new Scanner(System.in);
-            System.out.print("What do you want to do?: ");
+            System.out.print("What do you want to do?: " + "\n");
             String inputUser = input.nextLine();
 
 
@@ -112,7 +112,7 @@ public class Adventure {
                                 rooms[i].setCurrentRoom(false);
                                 currentRoom = i;
                                 rooms[i].getNorth().setCurrentRoom(true);
-                                System.out.println("You are now in " + rooms[i].getNorth().getName());
+                                System.out.println("You are now in " + rooms[i].getNorth().getName() + "\n");
 
                             }
                             break;
@@ -133,7 +133,7 @@ public class Adventure {
                                 rooms[i].setCurrentRoom(false);
                                 currentRoom = i;
                                 rooms[i].getSouth().setCurrentRoom(true);
-                                System.out.println("You are now in " + rooms[i].getSouth().getName());
+                                System.out.println("You are now in " + rooms[i].getSouth().getName() + "\n");
                             }
                             break;
                         }
@@ -153,7 +153,7 @@ public class Adventure {
                                 rooms[i].setCurrentRoom(false);
                                 currentRoom = i;
                                 rooms[i].getWest().setCurrentRoom(true);
-                                System.out.println("You are now in " + rooms[i].getWest().getName());
+                                System.out.println("You are now in " + rooms[i].getWest().getName() + "\n");
                                 break;
                             }
                         }
@@ -172,31 +172,29 @@ public class Adventure {
                                 rooms[i].setCurrentRoom(false);
                                 currentRoom = i;
                                 rooms[i].getEast().setCurrentRoom(true);
-                                System.out.println("You are now in " + rooms[i].getEast().getName());
+                                System.out.println("You are now in " + rooms[i].getEast().getName() + "\n");
                             }
                             break;
                         }
 
                     }
                     break;
-            }
 
-            switch (inputUser) {
                 case "look":
                 case "l":
-                    System.out.println("Description of room: " + rooms[currentRoom].getRoomDescription());
+                    System.out.println("Description of room: " + rooms[currentRoom].getRoomDescription() + "\n");
                     for (Item item : rooms[currentRoom].getItemsListe()) {
-                        System.out.println(item.getItemName());
+                        System.out.println(item.getItemName() + "\n");
                     }
                     break;
 
                 case "take":
-                    System.out.println("Which item do you want to pick up?");
+                    System.out.println("Which item do you want to pick up?: ");
                     String itemInput = input.nextLine();
                     for (Item item : rooms[currentRoom].getItemsListe()) {
                         if (itemInput.equalsIgnoreCase(item.getItemName())) {
                             player.addToInventory(item);
-                            System.out.println("You have selected this item " + item.getItemName());
+                            System.out.println("You have selected this item " + item.getItemName() + "\n");
                         }
                         break;
                     }
@@ -204,12 +202,12 @@ public class Adventure {
 
 
                 case "drop":
-                    System.out.println("Which item do you want to drop");
+                    System.out.println("Which item do you want to drop?: ");
                     String itemRemoveInput = input.nextLine();
                     for (Item item : rooms[currentRoom].getItemsListe()) {
                         if (itemRemoveInput.equalsIgnoreCase(item.getItemName())) {
                             player.removeFromInventory(item);
-                            System.out.println("You have dropped this item " + item.getItemName());
+                            System.out.println("You have dropped this item " + item.getItemName() + "\n");
                         }
                         break;
                     }
@@ -219,6 +217,7 @@ public class Adventure {
                 case "help":
                 case "h":
                     Commands.help();
+                    System.out.println("\n");
                     break;
                 case "exit":
                     System.out.println("Quitting the game");
@@ -227,6 +226,11 @@ public class Adventure {
                 case "inventory":
                 case "i":
                     player.getInventory();
+                    System.out.println("\n");
+                    break;
+
+                default:
+                    System.out.println("Dont know what that mean, please try again!\n" + "If u need help, enter: help!\n");
                     break;
             }
         }
