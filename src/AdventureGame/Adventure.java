@@ -224,9 +224,9 @@ public class Adventure {
                     break;
 
                 case "inventory":
+                case "inv":
                 case "i":
                     player.getInventory();
-                    System.out.println("\n");
                     break;
 
                 default:
@@ -235,6 +235,20 @@ public class Adventure {
                             If u need help, enter: 'help/h'
                             """);
                     break;
+
+                case "health":
+                    String healthText = "Health: ";
+                    String lowHealthText = "you are in low health, eat something to gain health";
+                    String mediumHealthText = "you are in good health, but avoid fighting right now.";
+                    String highHealthText = "you are in high health";
+
+                    if (player.getHealth() <= 10) {
+                        System.out.println(healthText + player.getHealth() + " - " + lowHealthText);
+                    } else if (player.getHealth() < 40) {
+                        System.out.println(healthText + player.getHealth() + " - " + mediumHealthText);
+                    } else {
+                        System.out.println(player.getHealth() + " - " + highHealthText);
+                    }
             }
         }
     }

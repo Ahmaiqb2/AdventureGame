@@ -7,6 +7,7 @@ public class Player {
     public Room currentRoom;
     private Room requestedRoom;
     private ArrayList<Item> inventory = new ArrayList<>();
+    public int health;
 
 
     public Player() {
@@ -15,6 +16,11 @@ public class Player {
 
     public Room playerLocation(Room currentLocation) {
         return this.currentRoom= currentLocation;
+    }
+
+    public int getHealth() {
+        health = 50;
+        return health;
     }
 
     public String waysToGo(String direction) {
