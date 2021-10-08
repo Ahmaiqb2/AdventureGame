@@ -12,6 +12,7 @@ public class Room {
     private Room east;
     private Room west;
     public ArrayList<Item> itemsListe = new ArrayList<>();
+    public ArrayList<Food> foodsList = new ArrayList<>();
 
     public Room(String name, boolean currentRoom, String roomDescription) { // Constructor - En constructor er en cunstructor når den har det samme navn som en klasse
         this.name = name;
@@ -27,11 +28,21 @@ public class Room {
         this.item = item;
     }
 
+    public ArrayList<Item> getItemsListe() {
+        return itemsListe;
+    }
     public void addItem(Item item){
         itemsListe.add(item);
     }
     public void dropItem(Item item){
         itemsListe.remove(item);
+    }
+
+    public ArrayList<Food> getFoodsList() {
+        return foodsList;
+    }
+    public void addFood(Food food){
+        foodsList.add(food);
     }
 
     public void setCurrentRoom(boolean currentRoom) {
@@ -43,35 +54,6 @@ public class Room {
         this.south = south;
         this.east = east;
         this.west = west;
-    }
-
-    public void setNorth(Room north) {
-        this.north = north;
-    }
-
-    public void setSouth(Room south) {
-        this.south = south;
-    }
-
-    public void setEast(Room east) {
-        this.east = east;
-    }
-
-    public void setWest(Room west) {
-        this.west = west;
-    }
-
-    public void findItem(){
-
-    }
-
-    public void addItem(){
-
-    }
-
-    public ArrayList<Item> getItemsListe() {
-
-        return itemsListe;
     }
 
     public String getName() {
@@ -102,4 +84,19 @@ public class Room {
         return west;
     }
 
+    public void setNorth(Room north) {
+        this.north = north;
+    }
+
+    public void setSouth(Room south) {
+        this.south = south;
+    }
+
+    public void setEast(Room east) {
+        this.east = east;
+    }
+
+    public void setWest(Room west) {
+        this.west = west;
+    }
 }

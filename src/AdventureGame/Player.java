@@ -7,6 +7,7 @@ public class Player {
     public Room currentRoom;
     private Room requestedRoom;
     private ArrayList<Item> inventory = new ArrayList<>();
+    private ArrayList<Food> inventoryFood = new ArrayList<>();
     public int health;
 
 
@@ -46,12 +47,21 @@ public class Player {
                 System.out.println(item.getItemName());
             }
         }
-
+        if (inventoryFood.isEmpty()){
+            System.out.println("Your backpack is empty");
+        } else{
+            for(Food food: inventoryFood){
+                System.out.println(food.getFoodName());
+            }
+        }
     }
-
 
     public void addToInventory(Item item){
         inventory.add(item);
+    }
+
+    public void addToInventory(Food food){
+        inventoryFood.add(food);
     }
 
     public void removeFromInventory(Item item){

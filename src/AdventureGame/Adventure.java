@@ -24,6 +24,18 @@ public class Adventure {
         Item teddybear = new Item("Teddy bear", "Big fat teddy-bear", 2);
         Item toys = new Item("Toys", "Kids toys", 1);
         Item spreadsheet = new Item("Spreadsheet", "blank spreadsheet", 1);
+
+        Food banana = new Food("Banana",2);
+        Food apple = new Food("Apple",2);
+        Food bread = new Food("Bread",2);
+        Food mushroom = new Food("Mushroom",2);
+        Food meat = new Food("Meat",2);
+        Food bearmeat = new Food("Bear Meat",2);
+        Food boarmeat = new Food("boarMeat",2);
+        Food clameat = new Food("Clam Meat",2);
+        Food raptormeat = new Food("Raptor Meat",2);
+
+
         /*
         room1Liste.add(fridge);
         room1Liste.add(table);
@@ -71,6 +83,15 @@ public class Adventure {
         room7.addItem(toys);
         room8.addItem(spreadsheet);
 
+        room1.addFood(banana);
+        room2.addFood(apple);
+        room3.addFood(bread);
+        room4.addFood(mushroom);
+        room5.addFood(meat);
+        room6.addFood(bearmeat);
+        room7.addFood(boarmeat);
+        room8.addFood(clameat);
+        room9.addFood(raptormeat);
 
         room1.setDirections(null, room4, room2, null);
         room2.setDirections(null, null, room3, room1);
@@ -182,9 +203,15 @@ public class Adventure {
 
                 case "look":
                 case "l":
-                    System.out.println("Description of room: " + rooms[currentRoom].getRoomDescription() + "\n");
+                    System.out.println("Description of room: " + rooms[currentRoom].getRoomDescription());
                     for (Item item : rooms[currentRoom].getItemsListe()) {
-                        System.out.println(item.getItemName() + "\n");
+                        System.out.println(item.getItemName());
+                    }
+
+                    System.out.println(" ");
+
+                    for (Food food : rooms[currentRoom].getFoodsList()){
+                        System.out.println(food.getFoodName());
                     }
                     break;
 
@@ -196,6 +223,12 @@ public class Adventure {
                             player.addToInventory(item);
                             System.out.println("You have selected this item " + item.getItemName() + "\n");
                         }
+                    for (Food food : rooms[currentRoom].getFoodsList()){
+                        if (itemInput.equalsIgnoreCase(food.getFoodName())){
+                            player.addToInventory(food);
+                            System.out.println("You have selected food item " + food.getFoodName() + "\n");
+                        }
+                    }
                         break;
                     }
                     break;
