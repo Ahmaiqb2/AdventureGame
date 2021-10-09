@@ -8,6 +8,7 @@ public class Player {
     private Room requestedRoom;
     private ArrayList<Item> inventory = new ArrayList<>();
     private ArrayList<Food> inventoryFood = new ArrayList<>();
+    private ArrayList<Weapon> weaponInventory = new ArrayList<>();
     public int health;
 
 
@@ -41,17 +42,24 @@ public class Player {
 
     public void getInventory() {
         if (inventory.isEmpty()){
-            System.out.println("Your backpack is empty");
+            System.out.println("Items: N/A");
         } else{
             for(Item item: inventory){
-                System.out.println(item.getItemName());
+                System.out.println("Your backpack contains a " + item.getItemName());
             }
         }
         if (inventoryFood.isEmpty()){
-            System.out.println("Your backpack is empty");
+            System.out.println("Food: N/A");
         } else{
             for(Food food: inventoryFood){
-                System.out.println(food.getFoodName());
+                System.out.println("Your backpack contains a " + food.getFoodName());
+            }
+        }
+        if(weaponInventory.isEmpty()){
+            System.out.println("Weapons: N/A");
+        } else{
+            for (Weapon weapon : weaponInventory){
+                System.out.println("Your backpack contains a " + weapon.getWeaponName());
             }
         }
     }
@@ -63,6 +71,8 @@ public class Player {
     public void addToInventory(Food food){
         inventoryFood.add(food);
     }
+
+    public void addToInventory(Weapon weapon){weaponInventory.add(weapon);}
 
     public void removeFromInventory(Item item){
         inventory.remove(item);

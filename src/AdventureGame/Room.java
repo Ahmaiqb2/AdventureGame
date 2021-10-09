@@ -13,6 +13,8 @@ public class Room {
     private Room west;
     public ArrayList<Item> itemsListe = new ArrayList<>();
     public ArrayList<Food> foodsList = new ArrayList<>();
+    public ArrayList<Weapon> weaponList = new ArrayList<>();
+
 
     public Room(String name, boolean currentRoom, String roomDescription) { // Constructor - En constructor er en cunstructor når den har det samme navn som en klasse
         this.name = name;
@@ -43,6 +45,14 @@ public class Room {
     }
     public void addFood(Food food){
         foodsList.add(food);
+    }
+
+    public ArrayList<Weapon> getWeaponList() {
+        return weaponList;
+    }
+
+    public void addWeapon(Weapon weapon){
+        weaponList.add(weapon);
     }
 
     public void setCurrentRoom(boolean currentRoom) {

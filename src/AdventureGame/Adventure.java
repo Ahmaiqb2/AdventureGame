@@ -35,24 +35,13 @@ public class Adventure {
         Food clameat = new Food("Clam Meat",2);
         Food raptormeat = new Food("Raptor Meat",2);
 
-
-        /*
-        room1Liste.add(fridge);
-        room1Liste.add(table);
-        room2Liste.add(pen);
-        room2Liste.add(safe);
-        room3Liste.add(laptop);
-        room3Liste.add(TV);
-        room3Liste.add(ps3);
-        room4Liste.add(basketball);
-        room4Liste.add(clothes);
-        room5Liste.add(keys);
-        room6Liste.add(chips);
-        room6Liste.add(biscuits);
-        room7Liste.add(teddybear);
-        room7Liste.add(toys);
-        room8Liste.add(spreadsheet);
-     */
+        meleeWeapon razorblade = new meleeWeapon("Razor blade", 0, 15);
+        meleeWeapon fryingpan = new meleeWeapon("Frying pan", 3, 5);
+        meleeWeapon baseballbat = new meleeWeapon("Baseball bat", 5, 10);
+        meleeWeapon knife = new meleeWeapon("Knife", 1, 25);
+        meleeWeapon knuckles = new meleeWeapon("Knuckles", 1, 15);
+        ShootingWeapon glassbottle = new ShootingWeapon("Glass bottle", 2, 15, 2);
+        ShootingWeapon lugerpistol = new ShootingWeapon("Luger pistol", 4, 40, 5);
 
 
         System.out.println("Welcome to the Adventure Game");
@@ -92,6 +81,14 @@ public class Adventure {
         room7.addFood(boarmeat);
         room8.addFood(clameat);
         room9.addFood(raptormeat);
+
+        room1.addWeapon(razorblade);
+        room1.addWeapon(fryingpan);
+        room3.addWeapon(knuckles);
+        room5.addWeapon(lugerpistol);
+        room8.addWeapon(baseballbat);
+        room9.addWeapon(knife);
+        room6.addWeapon(glassbottle);
 
         room1.setDirections(null, room4, room2, null);
         room2.setDirections(null, null, room3, room1);
@@ -209,10 +206,16 @@ public class Adventure {
                     }
 
                     System.out.println(" ");
+                    System.out.println("Food: ");
 
-                    for (Food food : rooms[currentRoom].getFoodsList()){
+                    for (Food food : rooms[currentRoom].getFoodsList()) {
                         System.out.println(food.getFoodName());
                     }
+
+                    System.out.println(" ");
+                    System.out.println("Weapons: ");
+                    for (Weapon weapon : rooms[currentRoom].getWeaponList())
+                        System.out.println(weapon.getWeaponName());
                     break;
 
                 case "take":
@@ -223,15 +226,25 @@ public class Adventure {
                             player.addToInventory(item);
                             System.out.println("You have selected this item " + item.getItemName() + "\n");
                         }
-                    for (Food food : rooms[currentRoom].getFoodsList()){
-                        if (itemInput.equalsIgnoreCase(food.getFoodName())){
-                            player.addToInventory(food);
-                            System.out.println("You have selected food item " + food.getFoodName() + "\n");
+                        for (Food food : rooms[currentRoom].getFoodsList()) {
+                            if (itemInput.equalsIgnoreCase(food.getFoodName())) {
+                                player.addToInventory(food);
+                                System.out.println("You have selected food item: " + food.getFoodName() + "\n");
+                            }
+                            for (Weapon weapon : rooms[currentRoom].getWeaponList()) {
+                                if (itemInput.equalsIgnoreCase(weapon.getWeaponName())) {
+                                    player.addToInventory(weapon);
+                                    System.out.println("You have selected weapon: " + weapon.getWeaponName() + "\n");
+
+                                }
+                            }
+                            break;
                         }
-                    }
                         break;
                     }
                     break;
+
+
 
 
                 case "drop":
