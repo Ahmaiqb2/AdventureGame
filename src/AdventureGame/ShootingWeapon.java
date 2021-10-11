@@ -5,7 +5,7 @@ public class ShootingWeapon extends Weapon{
 public int usesLeft;
 
     public ShootingWeapon(String weaponName, int weaponWeight, int damage, int usesLeft) {
-        super(weaponName, weaponWeight, damage);
+        super(weaponName, String.valueOf(weaponWeight), damage);
         this.usesLeft = usesLeft;
     }
 

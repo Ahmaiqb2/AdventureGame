@@ -1,15 +1,15 @@
 package AdventureGame;
 
-public class Food {
+public class Food extends Item {
 
     private String foodName;
     private String foodDescription;
     private int foodWeight;
 
-    public Food(String foodName, int foodWeight){
-        this.foodName = foodName;
-        this.foodWeight = foodWeight;
+    public Food(String itemName, String itemDescription, int itemWeight) {
+        super(itemName, itemDescription, itemWeight);
     }
+
 
     public String getFoodName() {
         return foodName;

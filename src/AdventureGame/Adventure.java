@@ -25,17 +25,7 @@ public class Adventure {
         Item toys = new Item("Toys", "Kids toys", 1);
         Item spreadsheet = new Item("Spreadsheet", "blank spreadsheet", 1);
 
-        Food banana = new Food("Banana",2);
-        Food apple = new Food("Apple",2);
-        Food bread = new Food("Bread",2);
-        Food mushroom = new Food("Mushroom",2);
-        Food meat = new Food("Meat",2);
-        Food bearmeat = new Food("Bear Meat",2);
-        Food boarmeat = new Food("boarMeat",2);
-        Food clameat = new Food("Clam Meat",2);
-        Food raptormeat = new Food("Raptor Meat",2);
-
-        meleeWeapon razorblade = new meleeWeapon("Razor blade", 0, 15);
+        //meleeWeapon razorblade = new meleeWeapon("Razor blade", 0, 15);
         meleeWeapon fryingpan = new meleeWeapon("Frying pan", 3, 5);
         meleeWeapon baseballbat = new meleeWeapon("Baseball bat", 5, 10);
         meleeWeapon knife = new meleeWeapon("Knife", 1, 25);
@@ -43,6 +33,9 @@ public class Adventure {
         ShootingWeapon glassbottle = new ShootingWeapon("Glass bottle", 2, 15, 2);
         ShootingWeapon lugerpistol = new ShootingWeapon("Luger pistol", 4, 40, 5);
 
+        Food banana = new Food("Banana", "banana to eat", 2);
+
+        Weapon razorblade = new meleeWeapon("Razor blade", 0,15);
 
         System.out.println("Welcome to the Adventure Game");
 
@@ -72,23 +65,10 @@ public class Adventure {
         room7.addItem(toys);
         room8.addItem(spreadsheet);
 
-        room1.addFood(banana);
-        room2.addFood(apple);
-        room3.addFood(bread);
-        room4.addFood(mushroom);
-        room5.addFood(meat);
-        room6.addFood(bearmeat);
-        room7.addFood(boarmeat);
-        room8.addFood(clameat);
-        room9.addFood(raptormeat);
+        room1.addItem(banana);
 
-        room1.addWeapon(razorblade);
-        room1.addWeapon(fryingpan);
-        room3.addWeapon(knuckles);
-        room5.addWeapon(lugerpistol);
-        room8.addWeapon(baseballbat);
-        room9.addWeapon(knife);
-        room6.addWeapon(glassbottle);
+        room1.addItem(razorblade);
+
 
         room1.setDirections(null, room4, room2, null);
         room2.setDirections(null, null, room3, room1);
