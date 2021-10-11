@@ -12,6 +12,7 @@ public Item(String itemName, String itemDescription, int itemWeight){
     this.itemDescription = itemDescription;
     this.itemWeight = itemWeight;
     }
+
     public String getitemDescription() {
         return itemDescription;
     }
@@ -21,4 +22,6 @@ public Item(String itemName, String itemDescription, int itemWeight){
     public int getItemWeight(){
     return itemWeight;
     }
+
+
 }
