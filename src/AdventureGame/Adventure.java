@@ -249,11 +249,21 @@ public class Adventure {
 
                 case "drop":
                     System.out.println("Which item do you want to drop?: ");
-                    String itemRemoveInput = input.nextLine();
+                    String removeInput = input.nextLine();
                     for (Item item : rooms[currentRoom].getItemsListe()) {
-                        if (itemRemoveInput.equalsIgnoreCase(item.getItemName())) {
+                        if (removeInput.equalsIgnoreCase(item.getItemName())) {
                             player.removeFromInventory(item);
                             System.out.println("You have dropped this item " + item.getItemName() + "\n");
+                        } for (Food food : rooms[currentRoom].getFoodsList()){
+                            if (removeInput.equalsIgnoreCase(food.getFoodName())){
+                                player.removefromInventory(food);
+                                System.out.println("You havde dropped this food " + food.getFoodName() + "\n");
+                            }
+                        } for (Weapon weapon : rooms[currentRoom].getWeaponList()){
+                            if (removeInput.equalsIgnoreCase(weapon.getWeaponName())){
+                                player.removeFromInventory(weapon);
+                                System.out.println("You have dropped this weapon " + weapon.getWeaponName() + "\n");
+                            }
                         }
                         break;
                     }

@@ -72,11 +72,15 @@ public class Player {
         inventoryFood.add(food);
     }
 
+    public void removefromInventory(Food food){ inventoryFood.remove(food); }
+
     public void addToInventory(Weapon weapon){weaponInventory.add(weapon);}
 
     public void removeFromInventory(Item item){
         inventory.remove(item);
     }
+
+    public void removeFromInventory(Weapon weapon) {weaponInventory.remove(weapon);}
 
     public boolean changeRoom(String direction) {
         switch (direction) {
