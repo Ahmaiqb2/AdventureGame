@@ -33,9 +33,9 @@ public class Adventure {
         ShootingWeapon glassbottle = new ShootingWeapon("Glass bottle", 2, 15, 2);
         ShootingWeapon lugerpistol = new ShootingWeapon("Luger pistol", 4, 40, 5);
 
-        Food banana = new Food("Banana", "banana to eat", 2);
+        Item banana = new Food("Banana", "banana to eat", 2);
 
-        Weapon razorblade = new meleeWeapon("Razor blade", 0,15);
+        Weapon razorblade = new meleeWeapon("Razor blade", 0, 15);
 
         System.out.println("Welcome to the Adventure Game");
 
@@ -184,18 +184,6 @@ public class Adventure {
                     for (Item item : rooms[currentRoom].getItemsListe()) {
                         System.out.println(item.getItemName());
                     }
-
-                    System.out.println(" ");
-                    System.out.println("Food: ");
-
-                    for (Food food : rooms[currentRoom].getFoodsList()) {
-                        System.out.println(food.getFoodName());
-                    }
-
-                    System.out.println(" ");
-                    System.out.println("Weapons: ");
-                    for (Weapon weapon : rooms[currentRoom].getWeaponList())
-                        System.out.println(weapon.getWeaponName());
                     break;
 
                 case "take":
@@ -204,28 +192,12 @@ public class Adventure {
                     for (Item item : rooms[currentRoom].getItemsListe()) {
                         if (itemInput.equalsIgnoreCase(item.getItemName())) {
                             player.addToInventory(item);
+                            rooms[currentRoom].getItemsListe().remove(item);
                             System.out.println("You have selected this item " + item.getItemName() + "\n");
-                        }
-                        for (Food food : rooms[currentRoom].getFoodsList()) {
-                            if (itemInput.equalsIgnoreCase(food.getFoodName())) {
-                                player.addToInventory(food);
-                                System.out.println("You have selected food item: " + food.getFoodName() + "\n");
-                            }
-                            for (Weapon weapon : rooms[currentRoom].getWeaponList()) {
-                                if (itemInput.equalsIgnoreCase(weapon.getWeaponName())) {
-                                    player.addToInventory(weapon);
-                                    System.out.println("You have selected weapon: " + weapon.getWeaponName() + "\n");
-
-                                }
-                            }
-                            break;
                         }
                         break;
                     }
                     break;
-
-
-
 
                 case "drop":
                     System.out.println("Which item do you want to drop?: ");
@@ -233,17 +205,8 @@ public class Adventure {
                     for (Item item : rooms[currentRoom].getItemsListe()) {
                         if (removeInput.equalsIgnoreCase(item.getItemName())) {
                             player.removeFromInventory(item);
+                            rooms[currentRoom].addItem(item);
                             System.out.println("You have dropped this item " + item.getItemName() + "\n");
-                        } for (Food food : rooms[currentRoom].getFoodsList()){
-                            if (removeInput.equalsIgnoreCase(food.getFoodName())){
-                                player.removefromInventory(food);
-                                System.out.println("You havde dropped this food " + food.getFoodName() + "\n");
-                            }
-                        } for (Weapon weapon : rooms[currentRoom].getWeaponList()){
-                            if (removeInput.equalsIgnoreCase(weapon.getWeaponName())){
-                                player.removeFromInventory(weapon);
-                                System.out.println("You have dropped this weapon " + weapon.getWeaponName() + "\n");
-                            }
                         }
                         break;
                     }
@@ -274,9 +237,9 @@ public class Adventure {
 
                 case "health":
                     String healthText = "Health: ";
-                    String lowHealthText = "you are in low health, eat something to gain health";
-                    String mediumHealthText = "you are in good health, but avoid fighting right now.";
-                    String highHealthText = "you are in high health";
+                    String lowHealthText = "You are in low health, eat something to gain health! \n";
+                    String mediumHealthText = "You are in good health, but avoid fighting right now! \n";
+                    String highHealthText = "You are in high health! \n";
 
                     if (player.getHealth() <= 10) {
                         System.out.println(healthText + player.getHealth() + " - " + lowHealthText);

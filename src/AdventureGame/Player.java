@@ -44,22 +44,9 @@ public class Player {
         if (inventory.isEmpty()){
             System.out.println("Items: N/A");
         } else{
+            System.out.println("Your backpack contains: ");
             for(Item item: inventory){
-                System.out.println("Your backpack contains a " + item.getItemName());
-            }
-        }
-        if (inventoryFood.isEmpty()){
-            System.out.println("Food: N/A");
-        } else{
-            for(Food food: inventoryFood){
-                System.out.println("Your backpack contains a " + food.getFoodName());
-            }
-        }
-        if(weaponInventory.isEmpty()){
-            System.out.println("Weapons: N/A");
-        } else{
-            for (Weapon weapon : weaponInventory){
-                System.out.println("Your backpack contains a " + weapon.getWeaponName());
+                System.out.println(" " + item.getItemName());
             }
         }
     }
