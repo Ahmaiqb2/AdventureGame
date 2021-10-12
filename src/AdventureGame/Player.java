@@ -1,31 +1,124 @@
 package AdventureGame;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Player {
 
     public Room currentRoom;
-    private Room requestedRoom;
     private ArrayList<Item> inventory = new ArrayList<>();
-    private ArrayList<Food> inventoryFood = new ArrayList<>();
     private ArrayList<Weapon> weaponInventory = new ArrayList<>();
+    private ArrayList<Weapon> equippedWeapons = new ArrayList<>();
+    public int health;
+    private String equip;
+    Scanner input = new Scanner(System.in);
+
+
+    public Player(int health, Room currentRoom) {
+        this.health = health;
+        this.currentRoom = currentRoom;
+    }
+
+    public void take(){
+        System.out.println("Which item do you want to pick up?: ");
+        String itemInput = input.nextLine();
+        for (Item item : currentRoom.getItemsListe()) {
+            if (itemInput.equalsIgnoreCase(item.getItemName())) {
+                addToInventory(item);
+                currentRoom.getItemsListe().remove(item);
+                System.out.println("You have selected this item " + item.getItemName() + "\n");
+                break;
+            }
+        }
+    }
+
+    public void drop(){
+        System.out.println("Which item do you want to drop?: ");
+        String removeInput = input.nextLine();
+        for (Item item : getInventoryy()) {
+            if (removeInput.equalsIgnoreCase(item.getItemName())) {
+                removeFromInventory(item);
+                currentRoom.addItem(item);
+                System.out.println("You have dropped this item " + item.getItemName() + "\n");
+            }
+            break;
+        }
+    }
+
+    public void health(){
+        String healthText = "Health: ";
+        String lowHealthText = "You are in low health, eat something to gain health! \n";
+        String mediumHealthText = "You are in good health, but avoid fighting right now! \n";
+        String highHealthText = "You are in high health! \n";
+
+        if (getHealth() <= 10) {
+            System.out.println(healthText + getHealth() + " - " + lowHealthText);
+        } else if (getHealth() < 40) {
+            System.out.println(healthText + getHealth() + " - " + mediumHealthText);
+        } else {
+            System.out.println(getHealth() + " - " + highHealthText);
+        }
+    }
+
+    public void look(){
+        System.out.println("Description of room: " + currentRoom.getRoomDescription());
+        System.out.println("Items in the room: ");
+        for (Item item : currentRoom.getItemsListe()) {
+            System.out.println(" -" + item.getItemName());
+        }
+        System.out.println(" ");
+        for (Enemy enemy : currentRoom.getEnemyListe()){
+            System.out.println("Enemies in the room: ");
+            System.out.println(" -" + enemy.getEnemyName());
+        }
+    }
 
     public ArrayList<Weapon> getEquippedWeapons() {
         return equippedWeapons;
     }
 
-    private ArrayList<Weapon> equippedWeapons = new ArrayList<>();
-    public int health;
-    private String equip;
-
-
-    public Player(int health) {
-        this.health = health;
+    public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
 
-    public Room playerLocation(Room currentLocation) {
-        return this.currentRoom = currentLocation;
+    public void goNorth(){
+        if (currentRoom.getNorth() == null){
+            System.out.println("You cannot go there!");
+        } else {
+            System.out.println("Going north");
+            setCurrentRoom(currentRoom.getNorth());
+            System.out.println(currentRoom.getName() + "\n" + currentRoom.getRoomDescription());
+        }
+    }
+
+    public void goSouth(){
+        if (currentRoom.getSouth() == null){
+            System.out.println("You cannot go there!");
+        } else {
+            System.out.println("Going south");
+            setCurrentRoom(currentRoom.getSouth());
+            System.out.println(currentRoom.getName() + "\n" + currentRoom.getRoomDescription());
+        }
+    }
+
+    public void goEast(){
+        if (currentRoom.getEast() == null){
+            System.out.println("You cannot go there!");
+        } else {
+            System.out.println("Going east");
+            setCurrentRoom(currentRoom.getEast());
+            System.out.println(currentRoom.getName() + "\n" + currentRoom.getRoomDescription());
+        }
+    }
+
+    public void goWest(){
+        if (currentRoom.getWest() == null){
+            System.out.println("You cannot go there!");
+        } else {
+            System.out.println("Going west");
+            setCurrentRoom(currentRoom.getWest());
+            System.out.println(currentRoom.getName() + "\n" + currentRoom.getRoomDescription());
+        }
     }
 
     public int getHealth() {
@@ -34,21 +127,6 @@ public class Player {
 
     public String getEquip() {
         return equip;
-    }
-
-    public String waysToGo(String direction) {
-        String result = direction;
-
-        if (direction.equals("go north") || direction.equals("go n") || direction.equals("north")) {
-            result = "n";
-        } else if (direction.equals("go east") || direction.equals("go e") || direction.equals("east")) {
-            result = "e";
-        } else if (direction.equals("go south") || direction.equals("go s") || direction.equals("south")) {
-            result = "s";
-        } else if (direction.equals("go west") || direction.equals("go w") || direction.equals("west")) {
-            result = "w";
-        }
-        return result;
     }
 
     public void getInventory() {
@@ -91,38 +169,8 @@ public class Player {
         return inventory;
     }
 
-    public void addToInventory(Food food) {
-        inventoryFood.add(food);
-    }
-
-    public void removefromInventory(Food food) {
-        inventoryFood.remove(food);
-    }
-
-    public void addToInventory(Weapon weapon) {
-        weaponInventory.add(weapon);
-    }
-
     public void removeFromInventory(Item item) {
         inventory.remove(item);
-    }
-
-    public void removeFromInventory(Weapon weapon) {
-        weaponInventory.remove(weapon);
-    }
-
-    public boolean changeRoom(String direction) {
-        switch (direction) {
-            case "N" -> requestedRoom = this.currentRoom.getNorth();
-            case "E" -> requestedRoom = this.currentRoom.getEast();
-            case "S" -> requestedRoom = this.currentRoom.getSouth();
-            case "W" -> requestedRoom = this.currentRoom.getWest();
-        }
-        if (requestedRoom != null) {
-            this.currentRoom = requestedRoom;
-            return true;
-        }
-        return false;
     }
 
     public void eat(String foodName) {
@@ -179,6 +227,14 @@ public class Player {
                 System.out.println("Your equipments: " + item.getItemName());
             }
         }
+    }
+
+    public void enemyAttack(int damage){
+        health = health - damage;
+    }
+
+    public void attack(String enemy){
+
     }
 }
 

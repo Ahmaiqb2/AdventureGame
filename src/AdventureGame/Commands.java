@@ -7,13 +7,6 @@ public class Commands {
     public Commands(){
     }
 
-    public static void look() {
-        int currentRoom = 0;
-        System.out.println("Description of room: " + rooms[currentRoom].getRoomDescription() + "\n");
-        for (Item item : rooms[currentRoom].getItemsListe()) {
-            System.out.println(item.getItemName() + "\n");
-        }
-    }
 
     public static void help() {
 

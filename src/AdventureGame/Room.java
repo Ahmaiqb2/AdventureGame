@@ -14,8 +14,6 @@ public class Room {
     public ArrayList<Item> itemsListe = new ArrayList<>();
     public ArrayList<Enemy> enemyListe = new ArrayList<>();
 
-
-
     public Room(String name, boolean currentRoom, String roomDescription) { // Constructor - En constructor er en cunstructor når den har det samme navn som en klasse
         this.name = name;
         this.currentRoom = currentRoom;
@@ -40,13 +38,14 @@ public class Room {
     public ArrayList<Enemy> getEnemyListe() {
         return enemyListe;
     }
+
     public void addEnemy(Enemy enemy){
         enemyListe.add(enemy);
     }
+
     public void dropItem(Item item){
         itemsListe.remove(item);
     }
-
 
     public void setCurrentRoom(boolean currentRoom) {
         this.currentRoom = currentRoom;

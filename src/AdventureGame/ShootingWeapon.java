@@ -3,12 +3,13 @@ package AdventureGame;
 public class ShootingWeapon extends Weapon{
 
 public int usesLeft;
-public int damage;
+public int ammo;
 
-    public ShootingWeapon(String itemName, String itemDescription, int itemWeight, int damage, int usesLeft) {
-        super(itemName, itemDescription, itemWeight);
+    public ShootingWeapon(String itemName, String itemDescription, int itemWeight, int damage, int usesLeft, int ammo) {
+        super(itemName, itemDescription, itemWeight, damage);
         this.usesLeft = usesLeft;
-        this.damage = damage;
+        this.ammo = ammo;
+
     }
 
     @Override

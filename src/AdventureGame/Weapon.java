@@ -8,13 +8,17 @@ public class Weapon extends Item {
     private int damage;
     private int usesLeft;
 
-    public Weapon(String itemName, String itemDescription, int itemWeight) {
+    public Weapon(String itemName, String itemDescription, int itemWeight, int damage) {
         super(itemName, itemDescription, itemWeight);
+        this.damage = damage;
     }
-
 
     public String getWeaponName() {
         return weaponName;
+    }
+
+    public int getDamage(){
+        return damage;
     }
 
     public int getWeaponWeight() {

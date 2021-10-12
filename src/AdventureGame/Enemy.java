@@ -8,6 +8,7 @@ public class Enemy {
     private int enemyHealth;
     private int enemyDamage;
     private Room currentRoom;
+    private Weapon enemyWeapon;
 
     public Enemy(String name, String description, int health, int damage, Room currentRoom) {
         this.enemyName = name;
@@ -15,6 +16,7 @@ public class Enemy {
         this.enemyHealth = health;
         this.enemyDamage = damage;
         this.currentRoom = currentRoom;
+        this.enemyWeapon = enemyWeapon;
     }
 
     public int getEnemyDamage() {
@@ -38,4 +40,7 @@ public class Enemy {
 
     }
 
+    public Weapon getWeapon() {
+        return enemyWeapon;
+    }
 }
