@@ -25,17 +25,20 @@ public class Adventure {
         Item toys = new Item("Toys", "Kids toys", 1);
         Item spreadsheet = new Item("Spreadsheet", "blank spreadsheet", 1);
 
-        //meleeWeapon razorblade = new meleeWeapon("Razor blade", 0, 15);
-        meleeWeapon fryingpan = new meleeWeapon("Frying pan", 3, 5);
-        meleeWeapon baseballbat = new meleeWeapon("Baseball bat", 5, 10);
-        meleeWeapon knife = new meleeWeapon("Knife", 1, 25);
-        meleeWeapon knuckles = new meleeWeapon("Knuckles", 1, 15);
-        ShootingWeapon glassbottle = new ShootingWeapon("Glass bottle", 2, 15, 2);
-        ShootingWeapon lugerpistol = new ShootingWeapon("Luger pistol", 4, 40, 5);
+        Item razorblade = new meleeWeapon("Razor blade", "Tiny razor blade", 0, 10);
+        Item fryingpan = new meleeWeapon("Frying pan", "Dark frying pan", 10, 5);
+        Item baseballbat = new meleeWeapon("Baseball bat", "Beige baseball bat", 10, 10);
+        Item knife = new meleeWeapon("Knife", "Sharp knife", 3, 20);
+        Item knuckles = new meleeWeapon("Knuckles", "Silver knuckles", 2, 12);
+        Item glassbottle = new ShootingWeapon("Glass bottle", "Broken glass bottle", 4, 10, 2);
+        Item lugerpistol = new ShootingWeapon("Luger pistol", "Dusty luger pistol", 7, 40, 5);
 
-        Item banana = new Food("Banana", "banana to eat", 2);
+        Item banana = new Food("Banana", "Yellow banana", 2);
+        Item cola = new Food("Cola", "Coke can", 3);
 
-        Weapon razorblade = new meleeWeapon("Razor blade", 0, 15);
+
+
+
 
         System.out.println("Welcome to the Adventure Game");
 
@@ -68,6 +71,12 @@ public class Adventure {
         room1.addItem(banana);
 
         room1.addItem(razorblade);
+        room2.addItem(fryingpan);
+        room3.addItem(glassbottle);
+        room4.addItem(knuckles);
+        room4.addItem(baseballbat);
+        room8.addItem(lugerpistol);
+        room8.addItem(knife);
 
 
         room1.setDirections(null, room4, room2, null);
@@ -93,7 +102,7 @@ public class Adventure {
         label:
         while (true) {
             Scanner input = new Scanner(System.in);
-            System.out.print("What do you want to do?: " + "\n");
+            System.out.print("What do you want to do? " + "\n");
             String inputUser = input.nextLine();
 
 
@@ -194,15 +203,17 @@ public class Adventure {
                             player.addToInventory(item);
                             rooms[currentRoom].getItemsListe().remove(item);
                             System.out.println("You have selected this item " + item.getItemName() + "\n");
+                            break;
                         }
-                        break;
+
                     }
                     break;
+
 
                 case "drop":
                     System.out.println("Which item do you want to drop?: ");
                     String removeInput = input.nextLine();
-                    for (Item item : rooms[currentRoom].getItemsListe()) {
+                    for (Item item : player.getInventoryy()) {
                         if (removeInput.equalsIgnoreCase(item.getItemName())) {
                             player.removeFromInventory(item);
                             rooms[currentRoom].addItem(item);

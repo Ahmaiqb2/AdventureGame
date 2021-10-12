@@ -1,9 +1,10 @@
 package AdventureGame;
 
 public class meleeWeapon extends Weapon{
+public int damage;
 
-
-    public meleeWeapon(String weaponName, int weaponWeight, int damage) {
-        super(weaponName, String.valueOf(weaponWeight), damage);
+    public meleeWeapon(String itemName, String itemDescription, int itemWeight, int damage) {
+        super(itemName, itemDescription, itemWeight);
+        this.damage = damage;
     }
 }

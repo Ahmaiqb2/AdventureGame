@@ -1,5 +1,6 @@
 package AdventureGame;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Player {
@@ -46,7 +47,7 @@ public class Player {
         } else{
             System.out.println("Your backpack contains: ");
             for(Item item: inventory){
-                System.out.println(" " + item.getItemName());
+                System.out.println(item.getItemName());
             }
         }
     }
@@ -55,6 +56,9 @@ public class Player {
         inventory.add(item);
     }
 
+    public ArrayList<Item> getInventoryy() {
+        return inventory;
+    }
     public void addToInventory(Food food){
         inventoryFood.add(food);
     }
