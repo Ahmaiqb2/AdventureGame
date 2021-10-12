@@ -144,7 +144,8 @@ public class Player {
         if (weapon == null) {
             System.out.println("You dont have a weapon in your inventory");
         } else {
-
+            equip += ((Weapon) weapon).getWeaponName();
+            System.out.println(equip);
         }
     }
 
@@ -156,6 +157,14 @@ public class Player {
         }
         return null;
 
+    }
+
+    public void equiment(){
+        if (equip == null){
+            System.out.println("You dont have anything on");
+        } else {
+            System.out.println(getEquip());
+        }
     }
 }
 
