@@ -285,7 +285,7 @@ public class Adventure {
                     break;
 
                 case "equipments":
-                    player.equitment();
+                    player.equiment();
                     break;
 
                 case "equip":
