@@ -12,8 +12,8 @@ public class Room {
     private Room east;
     private Room west;
     public ArrayList<Item> itemsListe = new ArrayList<>();
-    public ArrayList<Food> foodsList = new ArrayList<>();
-    public ArrayList<Weapon> weaponList = new ArrayList<>();
+    public ArrayList<Enemy> enemyListe = new ArrayList<>();
+
 
 
     public Room(String name, boolean currentRoom, String roomDescription) { // Constructor - En constructor er en cunstructor når den har det samme navn som en klasse
@@ -36,24 +36,17 @@ public class Room {
     public void addItem(Item item){
         itemsListe.add(item);
     }
+
+    public ArrayList<Enemy> getEnemyListe() {
+        return enemyListe;
+    }
+    public void addEnemy(Enemy enemy){
+        enemyListe.add(enemy);
+    }
     public void dropItem(Item item){
         itemsListe.remove(item);
     }
 
-    public ArrayList<Food> getFoodsList() {
-        return foodsList;
-    }
-    public void addFood(Food food){
-        foodsList.add(food);
-    }
-
-    public ArrayList<Weapon> getWeaponList() {
-        return weaponList;
-    }
-
-    public void addWeapon(Weapon weapon){
-        weaponList.add(weapon);
-    }
 
     public void setCurrentRoom(boolean currentRoom) {
         this.currentRoom = currentRoom;

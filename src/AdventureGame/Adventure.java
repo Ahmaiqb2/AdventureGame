@@ -8,6 +8,7 @@ public class Adventure {
         Room[] rooms = new Room[9];
         Player player = new Player(50);
         int currentRoom = 0;
+        Enemy[] enemies = new Enemy[5];
 
         Item fridge = new Item("Fridge", "White fridge", 7);
         Item table = new Item("Table", "Small table", 5);
@@ -48,6 +49,8 @@ public class Adventure {
         Room room7 = new Room("Room 7", false, "Kids room: Big teddybear in the corner and some toys laying next to it");
         Room room8 = new Room("Room 8", false, "xxx");
         Room room9 = new Room("Room 9", false, "xxx");
+
+        Enemy enemy1 = new Enemy("Darth Vardar", "StarWars",10,5,room1);
 
         room1.addItem(fridge);
         room1.addItem(table);
@@ -95,6 +98,15 @@ public class Adventure {
         rooms[6] = room7;
         rooms[7] = room8;
         rooms[8] = room9;
+
+        enemies[0] = enemy1;
+        enemies[0] = enemy1;
+        enemies[0] = enemy1;
+        enemies[0] = enemy1;
+        enemies[0] = enemy1;
+        enemies[0] = enemy1;
+
+        room1.addEnemy(enemy1);
 
         label:
         while (true) {
@@ -188,8 +200,14 @@ public class Adventure {
                 case "look":
                 case "l":
                     System.out.println("Description of room: " + rooms[currentRoom].getRoomDescription());
+                    System.out.println("Items in the room: ");
                     for (Item item : rooms[currentRoom].getItemsListe()) {
-                        System.out.println(item.getItemName());
+                        System.out.println(" -" + item.getItemName());
+                    }
+                    System.out.println(" ");
+                    for (Enemy enemy : rooms[currentRoom].getEnemyListe()){
+                        System.out.println("Enemies in the room: ");
+                        System.out.println(" -" + enemy.getEnemyName());
                     }
                     break;
 
