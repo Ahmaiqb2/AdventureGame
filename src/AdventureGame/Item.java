@@ -13,11 +13,14 @@ public Item(String itemName, String itemDescription, int itemWeight){
     this.itemWeight = itemWeight;
     }
 
+    public String getItemName(){
+        return itemName;
+    }
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
     public String getitemDescription() {
         return itemDescription;
-    }
-    public String getItemName(){
-    return itemName;
     }
     public int getItemWeight(){
     return itemWeight;

@@ -35,9 +35,6 @@ public class Adventure {
 
         Item banana = new Food("Banana", "Yellow banana", 2);
         Item cola = new Food("Cola", "Coke can", 3);
-        
-
-
 
 
         System.out.println("Welcome to the Adventure Game");
@@ -167,6 +164,7 @@ public class Adventure {
 
                     }
                     break;
+
                 case "go e":
                 case "go east":
                     for (int i = 0; i < rooms.length; i++) {
@@ -259,6 +257,15 @@ public class Adventure {
                     } else {
                         System.out.println(player.getHealth() + " - " + highHealthText);
                     }
+                    break;
+
+                case "eat":
+                    System.out.println("What do you want to eat?: ");
+
+                    break;
+
+                case "equip":
+                    System.out.println("What do you want to equip?");
             }
         }
     }

@@ -51,6 +51,26 @@ public class Player {
         }
     }
 
+    public Item findItemInventory(String itemName) {
+        for (int i = 0; i < inventory.size(); i++) {
+            Item requestedItem = inventory.get(i);
+            if (requestedItem.getItemName().equals(itemName)) {
+                return requestedItem;
+            }
+        }
+        return null;
+    }
+
+    public Item findItem(String itemName) {
+        for (int i = 0; i < currentRoom.itemsListe.size(); i++) {
+            Item requestedItem = currentRoom.itemsListe.get(i);
+            if (requestedItem.getItemName().equals(itemName)) {
+                return requestedItem;
+            }
+        }
+        return null;
+    }
+
     public void addToInventory(Item item){
         inventory.add(item);
     }
@@ -83,6 +103,16 @@ public class Player {
             return true;
         }
         return false;
+    }
+
+    public void eat(Food foodName){
+        Item food = inventory.get(inventory.indexOf(foodName));
+        if (food == null){
+            System.out.println("you have nothing to eat");
+        } else if (food instanceof Food){
+            health += foodName.getHealing();
+
+        }
     }
 }
 

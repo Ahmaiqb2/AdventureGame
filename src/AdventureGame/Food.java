@@ -2,25 +2,26 @@ package AdventureGame;
 
 public class Food extends Item {
 
-    private String foodName;
-    private String foodDescription;
     private int foodWeight;
+    private int healing;
 
     public Food(String itemName, String itemDescription, int itemWeight) {
         super(itemName, itemDescription, itemWeight);
+        this.healing = healing;
+        this.foodWeight = foodWeight;
     }
 
+    public int getHealing() {
+        return healing;
+    }
 
-    public String getFoodName() {
-        return foodName;
+    public void setHealing(int healing) {
+        this.healing = healing;
     }
 
     public int getFoodWeight() {
         return foodWeight;
     }
 
-    public String getFoodDescription() {
-        return foodDescription;
-    }
 
 }
