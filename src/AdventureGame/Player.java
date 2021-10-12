@@ -54,7 +54,7 @@ public class Player {
                 System.out.println(" " + item.getItemName());
             }
         }
-    }
+    }                                          
 
     public Item findItemInventory(String itemName) {
         for (int i = 0; i < inventory.size(); i++) {
@@ -132,7 +132,6 @@ public class Player {
     }
 
     public Food findFood(String foodName) {
-
         for (Item item : getInventoryy()) {
             if (item instanceof Food) {
                 return (Food) item;
@@ -147,7 +146,7 @@ public class Player {
             System.out.println("You dont have a weapon in your inventory");
         } else {
             equip += ((Weapon) weapon).getWeaponName();
-            System.out.println(equip);
+            System.out.println(equipment);
         }
     }
 
@@ -161,11 +160,11 @@ public class Player {
 
     }
 
-    public void equiment(){
+    public void equitment(){
         if (equip == null){
             System.out.println("You dont have anything on");
         } else {
-            System.out.println(getEquip());
+            System.out.println("You have " + " on");
         }
     }
 }
