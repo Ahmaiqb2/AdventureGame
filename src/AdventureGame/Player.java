@@ -125,6 +125,8 @@ public class Player {
             System.out.println("you have nothing to eat");
         } else {
             health += ((Food) food).getHealing();
+            System.out.println("You have eaten: " + foodName);
+            System.out.println("And gained: " + food.getHealing() + "health");
 
         }
     }
