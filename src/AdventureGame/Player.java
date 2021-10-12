@@ -9,6 +9,12 @@ public class Player {
     private ArrayList<Item> inventory = new ArrayList<>();
     private ArrayList<Food> inventoryFood = new ArrayList<>();
     private ArrayList<Weapon> weaponInventory = new ArrayList<>();
+
+    public ArrayList<Weapon> getEquippedWeapons() {
+        return equippedWeapons;
+    }
+
+    private ArrayList<Weapon> equippedWeapons = new ArrayList<>();
     public int health;
     private String equip;
 
@@ -26,7 +32,7 @@ public class Player {
         return health;
     }
 
-    public String getEquip(){
+    public String getEquip() {
         return equip;
     }
 
@@ -54,7 +60,7 @@ public class Player {
                 System.out.println(" " + item.getItemName());
             }
         }
-    }                                          
+    }
 
     public Item findItemInventory(String itemName) {
         for (int i = 0; i < inventory.size(); i++) {
@@ -126,12 +132,13 @@ public class Player {
         } else {
             health += ((Food) food).getHealing();
             System.out.println("You have eaten: " + foodName);
-            System.out.println("And gained: " + food.getHealing() + "health");
+            System.out.println("And gained: " + food.getHealing() + " - health");
 
         }
     }
 
     public Food findFood(String foodName) {
+
         for (Item item : getInventoryy()) {
             if (item instanceof Food) {
                 return (Food) item;
@@ -146,25 +153,31 @@ public class Player {
             System.out.println("You dont have a weapon in your inventory");
         } else {
             equip += ((Weapon) weapon).getWeaponName();
-            System.out.println(equipment);
+            equippedWeapons.add((Weapon) weapon);
+            System.out.println("You have equipped: " + equipment);
         }
     }
 
     private Weapon findWeapon(String equipment) {
         for (Item item : getInventoryy()) {
-            if (item instanceof Weapon) {
-                return (Weapon) item;
+            {
+                if (item instanceof Weapon) {
+                    return (Weapon) item;
+                }
             }
         }
         return null;
 
     }
 
-    public void equitment(){
-        if (equip == null){
+    public void equiment() {
+        if (equip == null) {
             System.out.println("You dont have anything on");
         } else {
-            System.out.println("You have " + " on");
+
+            for ( Item item : getEquippedWeapons() ) {
+                System.out.println("Your equipments: " + item.getItemName());
+            }
         }
     }
 }
