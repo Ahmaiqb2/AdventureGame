@@ -286,6 +286,8 @@ public class Adventure {
 
                 case "equip":
                     System.out.println("What do you want to equip?");
+                    String equip = input.nextLine();
+                    player.equip(equip);
             }
         }
     }

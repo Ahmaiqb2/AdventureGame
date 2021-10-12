@@ -10,6 +10,7 @@ public class Player {
     private ArrayList<Food> inventoryFood = new ArrayList<>();
     private ArrayList<Weapon> weaponInventory = new ArrayList<>();
     public int health;
+    private String equip;
 
 
     public Player(int health) {
@@ -23,6 +24,10 @@ public class Player {
 
     public int getHealth() {
         return health;
+    }
+
+    public String getEquip(){
+        return equip;
     }
 
     public String waysToGo(String direction) {
@@ -128,10 +133,29 @@ public class Player {
 
         for (Item item : getInventoryy()) {
             if (item instanceof Food) {
-        return(Food) item;
+                return (Food) item;
             }
         }
         return null;
+    }
+
+    public void equip(String equipment) {
+        Weapon weapon = findWeapon(equipment);
+        if (weapon == null) {
+            System.out.println("You dont have a weapon in your inventory");
+        } else {
+
+        }
+    }
+
+    private Weapon findWeapon(String equipment) {
+        for (Item item : getInventoryy()) {
+            if (item instanceof Weapon) {
+                return (Weapon) item;
+            }
+        }
+        return null;
+
     }
 }
 
