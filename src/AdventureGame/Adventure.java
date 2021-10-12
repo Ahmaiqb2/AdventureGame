@@ -35,7 +35,7 @@ public class Adventure {
 
         Item banana = new Food("Banana", "Yellow banana", 2);
         Item cola = new Food("Cola", "Coke can", 3);
-
+        
 
 
 
@@ -190,17 +190,13 @@ public class Adventure {
                 case "look":
                 case "l":
                     System.out.println("Description of room: " + rooms[currentRoom].getRoomDescription());
-                    System.out.println("Items in the room: ");
                     for (Item item : rooms[currentRoom].getItemsListe()) {
-                        System.out.println(" -" + item.getItemName());
+                        System.out.println(item.getItemName());
                     }
                     break;
 
                 case "take":
                     System.out.println("Which item do you want to pick up?: ");
-                    for (Item item : rooms[currentRoom].getItemsListe()) {
-                        System.out.println(" -" + item.getItemName());
-                    }
                     String itemInput = input.nextLine();
                     for (Item item : rooms[currentRoom].getItemsListe()) {
                         if (itemInput.equalsIgnoreCase(item.getItemName())) {

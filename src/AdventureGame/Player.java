@@ -54,7 +54,9 @@ public class Player {
     public void addToInventory(Item item){
         inventory.add(item);
     }
-
+    public ArrayList<Item> getInventoryy() {
+        return inventory;
+    }
     public void addToInventory(Food food){
         inventoryFood.add(food);
     }
