@@ -12,16 +12,16 @@ public class Player {
     public int health;
 
 
-    public Player() {
+    public Player(int health) {
+        this.health = health;
         this.currentRoom = currentRoom;
     }
 
     public Room playerLocation(Room currentLocation) {
-        return this.currentRoom= currentLocation;
+        return this.currentRoom = currentLocation;
     }
 
     public int getHealth() {
-        health = 50;
         return health;
     }
 
@@ -41,11 +41,11 @@ public class Player {
     }
 
     public void getInventory() {
-        if (inventory.isEmpty()){
+        if (inventory.isEmpty()) {
             System.out.println("Items: N/A");
-        } else{
+        } else {
             System.out.println("Your backpack contains: ");
-            for(Item item: inventory){
+            for (Item item : inventory) {
                 System.out.println(" " + item.getItemName());
             }
         }
@@ -71,25 +71,34 @@ public class Player {
         return null;
     }
 
-    public void addToInventory(Item item){
+
+    public void addToInventory(Item item) {
         inventory.add(item);
     }
+
     public ArrayList<Item> getInventoryy() {
         return inventory;
     }
-    public void addToInventory(Food food){
+
+    public void addToInventory(Food food) {
         inventoryFood.add(food);
     }
 
-    public void removefromInventory(Food food){ inventoryFood.remove(food); }
+    public void removefromInventory(Food food) {
+        inventoryFood.remove(food);
+    }
 
-    public void addToInventory(Weapon weapon){weaponInventory.add(weapon);}
+    public void addToInventory(Weapon weapon) {
+        weaponInventory.add(weapon);
+    }
 
-    public void removeFromInventory(Item item){
+    public void removeFromInventory(Item item) {
         inventory.remove(item);
     }
 
-    public void removeFromInventory(Weapon weapon) {weaponInventory.remove(weapon);}
+    public void removeFromInventory(Weapon weapon) {
+        weaponInventory.remove(weapon);
+    }
 
     public boolean changeRoom(String direction) {
         switch (direction) {
@@ -105,14 +114,24 @@ public class Player {
         return false;
     }
 
-    public void eat(Food foodName){
-        Item food = inventory.get(inventory.indexOf(foodName));
-        if (food == null){
+    public void eat(String foodName) {
+        Food food = findFood(foodName);
+        if (food == null) {
             System.out.println("you have nothing to eat");
-        } else if (food instanceof Food){
-            health += foodName.getHealing();
+        } else {
+            health += ((Food) food).getHealing();
 
         }
+    }
+
+    public Food findFood(String foodName) {
+
+        for (Item item : getInventoryy()) {
+            if (item instanceof Food) {
+        return(Food) item;
+            }
+        }
+        return null;
     }
 }
 

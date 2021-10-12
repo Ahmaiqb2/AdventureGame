@@ -6,7 +6,7 @@ public class Adventure {
 
     public static void main(String[] args) {
         Room[] rooms = new Room[9];
-        Player player = new Player();
+        Player player = new Player(50);
         int currentRoom = 0;
 
         Item fridge = new Item("Fridge", "White fridge", 7);
@@ -33,8 +33,8 @@ public class Adventure {
         Item glassbottle = new ShootingWeapon("Glass bottle", "Broken glass bottle", 4, 10, 2);
         Item lugerpistol = new ShootingWeapon("Luger pistol", "Dusty luger pistol", 7, 40, 5);
 
-        Item banana = new Food("Banana", "Yellow banana", 2);
-        Item cola = new Food("Cola", "Coke can", 3);
+        Item banana = new Food("Banana", "Yellow banana", 2,5);
+        Item cola = new Food("Cola", "Coke can", 3,2);
 
 
         System.out.println("Welcome to the Adventure Game");
@@ -261,6 +261,8 @@ public class Adventure {
 
                 case "eat":
                     System.out.println("What do you want to eat?: ");
+                    String foodName = input.nextLine();
+                    player.eat(foodName);
 
                     break;
 
