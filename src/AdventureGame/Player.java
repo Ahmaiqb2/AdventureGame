@@ -25,7 +25,7 @@ public class Player {
             if (itemInput.equalsIgnoreCase(item.getItemName())) {
                 addToInventory(item);
                 currentRoom.getItemsListe().remove(item);
-                System.out.println("You have selected this item " + item.getItemName() + "\n");
+                System.out.println(Color.blue + "You have selected this item " + item.getItemName() + Color.yellow);
                 break;
             }
         }
@@ -38,7 +38,7 @@ public class Player {
             if (removeInput.equalsIgnoreCase(item.getItemName())) {
                 removeFromInventory(item);
                 currentRoom.addItem(item);
-                System.out.println("You have dropped this item " + item.getItemName() + "\n");
+                System.out.println(Color.red + "You have dropped this item " + item.getItemName() + Color.yellow);
             }
             break;
         }
@@ -46,29 +46,29 @@ public class Player {
 
     public void health() {
         String healthText = "Health: ";
-        String lowHealthText = "You are in low health, eat something to gain health! \n";
-        String mediumHealthText = "You are in good health, but avoid fighting right now! \n";
-        String highHealthText = "You are in high health! \n";
+        String lowHealthText = "You are in low health, eat something to gain health!";
+        String mediumHealthText = "You are in good health, but avoid fighting right now!";
+        String highHealthText = "You are in high health!";
 
         if (getHealth() <= 10) {
-            System.out.println(healthText + getHealth() + " - " + lowHealthText);
+            System.out.println(Color.red + healthText + getHealth() + " - " + lowHealthText + Color.yellow);
         } else if (getHealth() < 40) {
-            System.out.println(healthText + getHealth() + " - " + mediumHealthText);
+            System.out.println(Color.blue + healthText + getHealth() + " - " + mediumHealthText + Color.yellow);
         } else {
-            System.out.println(getHealth() + " - " + highHealthText);
+            System.out.println(Color.green + getHealth() + " - " + highHealthText + Color.yellow);
         }
     }
 
     public void look() {
-        System.out.println("Description of room: " + currentRoom.getRoomDescription());
-        System.out.println("Items in the room: ");
+        System.out.println(Color.blue + "Description of room: " + currentRoom.getRoomDescription());
+        System.out.println("\n Items in the room: ");
         for (Item item : currentRoom.getItemsListe()) {
             System.out.println(" -" + item.getItemName());
         }
-        System.out.println(" ");
+        System.out.println("");
         for (Enemy enemy : currentRoom.getEnemyListe()) {
-            System.out.println("Enemies in the room: ");
-            System.out.println(" -" + enemy.getEnemyName());
+            System.out.println(Color.red + "Enemies in the room: ");
+            System.out.println(" -" + enemy.getEnemyName() + Color.yellow);
         }
     }
 
@@ -82,41 +82,41 @@ public class Player {
 
     public void goNorth() {
         if (currentRoom.getNorth() == null) {
-            System.out.println("You cannot go there!");
+            System.out.println(Color.red + "You cannot go there!" + Color.yellow);
         } else {
-            System.out.println("Going north");
+            System.out.println(Color.green + "Going north" + Color.yellow);
             setCurrentRoom(currentRoom.getNorth());
-            System.out.println(currentRoom.getName() + "\n" + currentRoom.getRoomDescription());
+            System.out.println(Color.green + currentRoom.getName() + "\n" + currentRoom.getRoomDescription() + Color.yellow);
         }
     }
 
     public void goSouth() {
         if (currentRoom.getSouth() == null) {
-            System.out.println("You cannot go there!");
+            System.out.println(Color.red + "You cannot go there!" + Color.yellow);
         } else {
-            System.out.println("Going south");
+            System.out.println(Color.green + "Going south" + Color.yellow);
             setCurrentRoom(currentRoom.getSouth());
-            System.out.println(currentRoom.getName() + "\n" + currentRoom.getRoomDescription());
+            System.out.println(Color.green + currentRoom.getName() + "\n" + currentRoom.getRoomDescription() + Color.yellow);
         }
     }
 
     public void goEast() {
         if (currentRoom.getEast() == null) {
-            System.out.println("You cannot go there!");
+            System.out.println(Color.red + "You cannot go there!" + Color.yellow);
         } else {
-            System.out.println("Going east");
+            System.out.println(Color.green + "Going east" + Color.yellow);
             setCurrentRoom(currentRoom.getEast());
-            System.out.println(currentRoom.getName() + "\n" + currentRoom.getRoomDescription());
+            System.out.println(Color.green + currentRoom.getName() + "\n" + currentRoom.getRoomDescription() + Color.yellow);
         }
     }
 
     public void goWest() {
         if (currentRoom.getWest() == null) {
-            System.out.println("You cannot go there!");
+            System.out.println(Color.red + "You cannot go there!" + Color.yellow);
         } else {
-            System.out.println("Going west");
+            System.out.println(Color.green + "Going west" + Color.yellow);
             setCurrentRoom(currentRoom.getWest());
-            System.out.println(currentRoom.getName() + "\n" + currentRoom.getRoomDescription());
+            System.out.println(Color.green + currentRoom.getName() + "\n" + currentRoom.getRoomDescription() + Color.yellow);
         }
     }
 
@@ -126,9 +126,9 @@ public class Player {
 
     public void getInventory() {
         if (inventory.isEmpty()) {
-            System.out.println("Items: N/A");
+            System.out.println(Color.red + "Items: N/A" + Color.yellow);
         } else {
-            System.out.println("Your backpack contains: ");
+            System.out.println(Color.blue + "Your backpack contains: ");
             for (Item item : inventory) {
                 System.out.println(" " + item.getItemName());
             }
@@ -150,11 +150,11 @@ public class Player {
     public void eat(String foodName) {
         Food food = findFood(foodName);
         if (food == null) {
-            System.out.println("you have nothing to eat");
+            System.out.println(Color.red + "you have nothing to eat" + Color.yellow);
         } else {
             health += food.getHealing();
-            System.out.println("You have eaten: " + foodName);
-            System.out.println("And gained: " + food.getHealing() + " - health");
+            System.out.println(Color.green + "You have eaten: " + foodName + Color.yellow);
+            System.out.println(Color.green + "And gained: " + food.getHealing() + " - health" + Color.yellow);
 
         }
     }
@@ -185,20 +185,20 @@ public class Player {
     public void equip(String weaponName){
         Weapon requestedWeapon = findWeapon(weaponName);
         if (requestedWeapon == null){
-            System.out.println("You dont have any weapons in your inventory!");
+            System.out.println(Color.red + "You dont have any weapons in your inventory!" + Color.yellow);
         } else {
             currentWeapon = requestedWeapon;
-            System.out.println("You have equipped: " + requestedWeapon.getItemName());
+            System.out.println(Color.green + "You have equipped: " + requestedWeapon.getItemName() + Color.yellow);
         }
     }
 
     public void equiment() {
         if (currentWeapon == null) {
-            System.out.println("You dont have anything on");
+            System.out.println(Color.red + "You dont have anything on" + Color.yellow);
         } else {
 
             for (Item currentWeapon : getEquippedWeapons()) {
-                System.out.println("Your equipments: " + currentWeapon.getItemName());
+                System.out.println(Color.green + "Your equipments: " + currentWeapon.getItemName() + Color.yellow);
             }
         }
     }
@@ -210,16 +210,16 @@ public class Player {
     public void attack(String enemies) {
         Enemy enemy = findEnemy(enemies);
         if (enemy == null){
-            System.out.println("There is no enemies in the room");
+            System.out.println(Color.blue + "There is no enemies in the room" + Color.yellow);
         } else {
             if (currentWeapon == null){
-                System.out.println("You cannot attack without a weapon");
+                System.out.println(Color.blue + "You cannot attack without a weapon" + Color.yellow);
             } else if (currentWeapon instanceof ShootingWeapon){
                 if (((ShootingWeapon) currentWeapon).getUsesLeft() > 0){
                     System.out.println("You fired a shot");
                     ((ShootingWeapon) currentWeapon).setUsesLeft(((ShootingWeapon)currentWeapon).getUsesLeft() -1);
                 } else {
-                    System.out.println("Out of ammo");
+                    System.out.println(Color.red + "Out of ammo" + Color.yellow);
                 }
             } else {
                 System.out.println("You attack the enemy");
@@ -233,7 +233,7 @@ public class Player {
                     enemyAttack(enemy.getWeapon().getDamage());
                     System.out.println("Hp: " + health);
                     if (health <= 0){
-                        System.out.println("You died!");
+                        System.out.println(Color.red + "You died!" + Color.yellow);
                     }
                 }
             }
