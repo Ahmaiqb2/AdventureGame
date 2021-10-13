@@ -2,9 +2,9 @@ package AdventureGame;
 
 public class Item {
 
-private String itemName;
-private String itemDescription;
-private int itemWeight;
+private final String itemName;
+private final String itemDescription;
+private final int itemWeight;
 
 
 public Item(String itemName, String itemDescription, int itemWeight){
@@ -16,9 +16,7 @@ public Item(String itemName, String itemDescription, int itemWeight){
     public String getItemName(){
         return itemName;
     }
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
+
     public String getitemDescription() {
         return itemDescription;
     }

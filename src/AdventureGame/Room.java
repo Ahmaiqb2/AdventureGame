@@ -3,10 +3,9 @@ package AdventureGame;
 import java.util.ArrayList;
 
 public class Room {
-    private String roomDescription;
-    private String name;
-    private String item;
-    private boolean currentRoom;
+    private final String roomDescription;
+    private final String name;
+    private final boolean currentRoom;
     private Room north;
     private Room south;
     private Room east;
@@ -20,17 +19,10 @@ public class Room {
         this.roomDescription = roomDescription;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setItem(String item) {
-        this.item = item;
-    }
-
     public ArrayList<Item> getItemsListe() {
         return itemsListe;
     }
+
     public void addItem(Item item){
         itemsListe.add(item);
     }
@@ -41,14 +33,6 @@ public class Room {
 
     public void addEnemy(Enemy enemy){
         enemyListe.add(enemy);
-    }
-
-    public void dropItem(Item item){
-        itemsListe.remove(item);
-    }
-
-    public void setCurrentRoom(boolean currentRoom) {
-        this.currentRoom = currentRoom;
     }
 
     public void setDirections(Room north, Room south, Room east, Room west) {
@@ -86,19 +70,4 @@ public class Room {
         return west;
     }
 
-    public void setNorth(Room north) {
-        this.north = north;
-    }
-
-    public void setSouth(Room south) {
-        this.south = south;
-    }
-
-    public void setEast(Room east) {
-        this.east = east;
-    }
-
-    public void setWest(Room west) {
-        this.west = west;
-    }
 }

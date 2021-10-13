@@ -1,15 +1,7 @@
 package AdventureGame;
 
-import java.util.Scanner;
-
 public class Map {
 
-    public Room currentRoom;
-
-
-    public Room getCurrentRoom(){
-        return currentRoom;
-    }
 
     public static Room createMap() {
 
@@ -49,20 +41,20 @@ public class Map {
         Item toys = new Item("Toys", "Kids toys", 1);
         Item spreadsheet = new Item("Spreadsheet", "blank spreadsheet", 1);
 
+        Weapon razorblade = new meleeWeapon("Razor blade", "Tiny razor blade", 0, 10);
+        Weapon fryingpan = new meleeWeapon("Frying pan", "Dark frying pan", 10, 5);
+        Weapon baseballbat = new meleeWeapon("Baseball bat", "Beige baseball bat", 10, 10);
+        Weapon knife = new meleeWeapon("Knife", "Sharp knife", 3, 20);
+        Weapon knuckles = new meleeWeapon("Knuckles", "Silver knuckles", 2, 12);
+        Weapon glassbottle = new ShootingWeapon("Glass bottle", "Broken glass bottle", 4, 10, 2);
+        Weapon lugerpistol = new ShootingWeapon("Luger pistol", "Dusty luger pistol", 7, 40, 5);
 
-        Item gun = new Weapon("gun","pew pew", 1,5);
-        Item razorblade = new meleeWeapon("Razor blade", "Tiny razor blade", 0, 10);
-        Item fryingpan = new meleeWeapon("Frying pan", "Dark frying pan", 10, 5);
-        Item baseballbat = new meleeWeapon("Baseball bat", "Beige baseball bat", 10, 10);
-        Item knife = new meleeWeapon("Knife", "Sharp knife", 3, 20);
-        Item knuckles = new meleeWeapon("Knuckles", "Silver knuckles", 2, 12);
-        Item glassbottle = new ShootingWeapon("Glass bottle", "Broken glass bottle", 4, 10, 2,5);
-        Item lugerpistol = new ShootingWeapon("Luger pistol", "Dusty luger pistol", 7, 40, 5,10);
+        Weapon hammer = new meleeWeapon("hammer","stor hammer",2,5);
 
         Item banana = new Food("Banana", "Yellow banana", 2,5);
         Item cola = new Food("Cola", "Coke can", 3,2);
 
-        Enemy enemy1 = new Enemy("Darth Vardar", "StarWars",10,5,room2);
+        Enemy DarthVarder = new Enemy("Darth Vardar", "StarWars",20,room1, hammer);
 
         room1.addItem(fridge);
         room1.addItem(table);
@@ -81,6 +73,7 @@ public class Map {
         room8.addItem(spreadsheet);
 
         room1.addItem(banana);
+        room2.addItem(cola);
 
         room1.addItem(razorblade);
         room2.addItem(fryingpan);
@@ -90,118 +83,8 @@ public class Map {
         room8.addItem(lugerpistol);
         room8.addItem(knife);
 
-        room1.addEnemy(enemy1);
+        room1.addEnemy(DarthVarder);
 
         return room1;
     }
 }
-        /*Room room1 = new Room("Room 1", true, "There is a fridge and a table");
-        Room room2 = new Room("Room 2", false, "There is a table with a pen and a safe");
-        Room room3 = new Room("Room 3", false, "There is a laptop, and a TV-screen connected to a Playstation 3");
-        Room room4 = new Room("Room 4", false, "There is a basketball, and some clothes");
-        Room room5 = new Room("Room 5", false, "There is some keys");
-        Room room6 = new Room("Room 6", false, "Theres is a table with some chips, and biscuits");
-        Room room7 = new Room("Room 7", false, "There is a teddy bear and some toys");
-        Room room8 = new Room("Room 8", false, "There is a table with a spreadsheet on it");
-        Room room9 = new Room("Room 9", false, "There is xx");
-
-        // Room1
-        room1.setEast(room2);
-        room1.setSouth(room4);
-
-        // Room 2
-        room2.setEast(room3);
-        room2.setWest(room1);
-
-        // Room 3
-        room3.setWest(room2);
-        room3.setSouth(room6);
-
-        // Room 4
-        room4.setNorth(room1);
-        room4.setSouth(room7);
-
-        // Room 5
-        room5.setSouth(room8);
-
-        // Room 6
-        room6.setNorth(room3);
-        room6.setSouth(room9);
-
-        // Room 7
-        room7.setNorth(room4);
-        room7.setEast(room8);
-
-        // Room 8
-        room8.setNorth(room5);
-        room8.setEast(room9);
-        room8.setWest(room7);
-
-        // Room 9
-        room9.setNorth(room6);
-        room9.setWest(room8);
-
-    }
-
-    public Room getStarterRoom() {
-        return room1;
-    }
-}
-
-
-        /*Room room1 = new Room("Room 1", "Velkommen til det første rum");
-        Room room2 = new Room("Room 2", "isbane");
-        Room room3 = new Room("Room 3", "ørkenrum");
-        Room room4 = new Room("Room 4", "drømmeverden");
-        Room room5 = new Room("Room 5", "helved");
-        Room room6 = new Room("Room 6", "himlen");
-        Room room7 = new Room("Room 7", "død");
-        Room room8 = new Room("Room 8", "livet");
-        Room room9 = new Room("Room 9", "yessir");
-        // Room1
-        room1.setEast(room2);
-        room1.setSouth(room4);
-        // Room 2
-        room2.setEast(room3);
-        room2.setWest(room1);
-        // Room 3
-        room3.setWest(room2);
-        room3.setSouth(room6);
-        // Room 4
-        room4.setNorth(room1);
-        room4.setSouth(room7);
-        // Room 5
-        room5.setSouth(room8);
-        // Room 6
-        room6.setNorth(room3);
-        room6.setSouth(room9);
-        // Room 7
-        room7.setNorth(room4);
-        room7.setEast(room8);
-        // Room 8
-        room8.setNorth(room5);
-        room8.setEast(room9);
-        room8.setWest(room7);
-        // Room 9
-        room9.setNorth(room6);
-        room9.setWest(room8);
-    }
-    public void gameplay(){
-        Player player = new Player();
-        Commands commands = new Commands();
-        player.playerLocation(currentRoom);
-        Scanner inputUser = new Scanner(System.in);
-        String input = inputUser.nextLine();
-        while(true){
-            if (input.equals(player.waysToGo(input))){
-                createMap();
-            } else if (input.equals("look")){
-                Commands.look(currentRoom);
-            } else if (input.equals("help")){
-                commands.help();
-            } else {
-                commands.exit();
-            }
-        }
-    }
-}*/

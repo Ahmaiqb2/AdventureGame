@@ -6,11 +6,10 @@ import java.util.Scanner;
 public class Player {
 
     public Room currentRoom;
-    private ArrayList<Item> inventory = new ArrayList<>();
-    private ArrayList<Weapon> weaponInventory = new ArrayList<>();
-    private ArrayList<Weapon> equippedWeapons = new ArrayList<>();
+    private final ArrayList<Item> inventory = new ArrayList<>();
+    private final ArrayList<Weapon> equippedWeapons = new ArrayList<>();
     public int health;
-    private String equip;
+    private Weapon currentWeapon;
     Scanner input = new Scanner(System.in);
 
 
@@ -19,7 +18,7 @@ public class Player {
         this.currentRoom = currentRoom;
     }
 
-    public void take(){
+    public void take() {
         System.out.println("Which item do you want to pick up?: ");
         String itemInput = input.nextLine();
         for (Item item : currentRoom.getItemsListe()) {
@@ -32,7 +31,7 @@ public class Player {
         }
     }
 
-    public void drop(){
+    public void drop() {
         System.out.println("Which item do you want to drop?: ");
         String removeInput = input.nextLine();
         for (Item item : getInventoryy()) {
@@ -45,7 +44,7 @@ public class Player {
         }
     }
 
-    public void health(){
+    public void health() {
         String healthText = "Health: ";
         String lowHealthText = "You are in low health, eat something to gain health! \n";
         String mediumHealthText = "You are in good health, but avoid fighting right now! \n";
@@ -60,14 +59,14 @@ public class Player {
         }
     }
 
-    public void look(){
+    public void look() {
         System.out.println("Description of room: " + currentRoom.getRoomDescription());
         System.out.println("Items in the room: ");
         for (Item item : currentRoom.getItemsListe()) {
             System.out.println(" -" + item.getItemName());
         }
         System.out.println(" ");
-        for (Enemy enemy : currentRoom.getEnemyListe()){
+        for (Enemy enemy : currentRoom.getEnemyListe()) {
             System.out.println("Enemies in the room: ");
             System.out.println(" -" + enemy.getEnemyName());
         }
@@ -81,8 +80,8 @@ public class Player {
         this.currentRoom = currentRoom;
     }
 
-    public void goNorth(){
-        if (currentRoom.getNorth() == null){
+    public void goNorth() {
+        if (currentRoom.getNorth() == null) {
             System.out.println("You cannot go there!");
         } else {
             System.out.println("Going north");
@@ -91,8 +90,8 @@ public class Player {
         }
     }
 
-    public void goSouth(){
-        if (currentRoom.getSouth() == null){
+    public void goSouth() {
+        if (currentRoom.getSouth() == null) {
             System.out.println("You cannot go there!");
         } else {
             System.out.println("Going south");
@@ -101,8 +100,8 @@ public class Player {
         }
     }
 
-    public void goEast(){
-        if (currentRoom.getEast() == null){
+    public void goEast() {
+        if (currentRoom.getEast() == null) {
             System.out.println("You cannot go there!");
         } else {
             System.out.println("Going east");
@@ -111,8 +110,8 @@ public class Player {
         }
     }
 
-    public void goWest(){
-        if (currentRoom.getWest() == null){
+    public void goWest() {
+        if (currentRoom.getWest() == null) {
             System.out.println("You cannot go there!");
         } else {
             System.out.println("Going west");
@@ -125,10 +124,6 @@ public class Player {
         return health;
     }
 
-    public String getEquip() {
-        return equip;
-    }
-
     public void getInventory() {
         if (inventory.isEmpty()) {
             System.out.println("Items: N/A");
@@ -139,27 +134,6 @@ public class Player {
             }
         }
     }
-
-    public Item findItemInventory(String itemName) {
-        for (int i = 0; i < inventory.size(); i++) {
-            Item requestedItem = inventory.get(i);
-            if (requestedItem.getItemName().equals(itemName)) {
-                return requestedItem;
-            }
-        }
-        return null;
-    }
-
-    public Item findItem(String itemName) {
-        for (int i = 0; i < currentRoom.itemsListe.size(); i++) {
-            Item requestedItem = currentRoom.itemsListe.get(i);
-            if (requestedItem.getItemName().equals(itemName)) {
-                return requestedItem;
-            }
-        }
-        return null;
-    }
-
 
     public void addToInventory(Item item) {
         inventory.add(item);
@@ -178,7 +152,7 @@ public class Player {
         if (food == null) {
             System.out.println("you have nothing to eat");
         } else {
-            health += ((Food) food).getHealing();
+            health += food.getHealing();
             System.out.println("You have eaten: " + foodName);
             System.out.println("And gained: " + food.getHealing() + " - health");
 
@@ -195,17 +169,6 @@ public class Player {
         return null;
     }
 
-    public void equip(String equipment) {
-        Weapon weapon = findWeapon(equipment);
-        if (weapon == null) {
-            System.out.println("You dont have a weapon in your inventory");
-        } else {
-            equip += ((Weapon) weapon).getWeaponName();
-            equippedWeapons.add((Weapon) weapon);
-            System.out.println("You have equipped: " + equipment);
-        }
-    }
-
     private Weapon findWeapon(String equipment) {
         for (Item item : getInventoryy()) {
             {
@@ -218,24 +181,76 @@ public class Player {
 
     }
 
+
+    public void equip(String weaponName){
+        Weapon requestedWeapon = findWeapon(weaponName);
+        if (requestedWeapon == null){
+            System.out.println("You dont have any weapons in your inventory!");
+        } else {
+            currentWeapon = requestedWeapon;
+            System.out.println("You have equipped: " + requestedWeapon.getItemName());
+        }
+    }
+
     public void equiment() {
-        if (equip == null) {
+        if (currentWeapon == null) {
             System.out.println("You dont have anything on");
         } else {
 
-            for ( Item item : getEquippedWeapons() ) {
-                System.out.println("Your equipments: " + item.getItemName());
+            for (Item currentWeapon : getEquippedWeapons()) {
+                System.out.println("Your equipments: " + currentWeapon.getItemName());
             }
         }
     }
 
-    public void enemyAttack(int damage){
+    public void enemyAttack(int damage) {
         health = health - damage;
     }
 
-    public void attack(String enemy){
-
+    public void attack(String enemies) {
+        Enemy enemy = findEnemy(enemies);
+        if (enemy == null){
+            System.out.println("There is no enemies in the room");
+        } else {
+            if (currentWeapon == null){
+                System.out.println("You cannot attack without a weapon");
+            } else if (currentWeapon instanceof ShootingWeapon){
+                if (((ShootingWeapon) currentWeapon).getUsesLeft() > 0){
+                    System.out.println("You fired a shot");
+                    ((ShootingWeapon) currentWeapon).setUsesLeft(((ShootingWeapon)currentWeapon).getUsesLeft() -1);
+                } else {
+                    System.out.println("Out of ammo");
+                }
+            } else {
+                System.out.println("You attack the enemy");
+                enemy.dealDamageToEnemy(getCurrentWeapon().getDamage());
+                System.out.println("Enemy hp: " + enemy.getEnemyHealth());
+                if (enemy.getEnemyHealth() <= 0){
+                    System.out.println("The enemy is dead");
+                    currentRoom.getEnemyListe().remove(enemy);
+                } else {
+                    System.out.println("The enemy attack you");
+                    enemyAttack(enemy.getWeapon().getDamage());
+                    System.out.println("Hp: " + health);
+                    if (health <= 0){
+                        System.out.println("You died!");
+                    }
+                }
+            }
+        }
     }
+
+    public Weapon getCurrentWeapon() {
+        return currentWeapon;
+    }
+
+    private Enemy findEnemy(String enemies) {
+        for (Enemy enemy : currentRoom.getEnemyListe()) {
+            return enemy;
+        }
+        return null;
+    }
+
 }
 
 

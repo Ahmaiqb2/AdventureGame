@@ -1,26 +1,18 @@
 package AdventureGame;
 
-import AdventureGame.Room;
-
 public class Enemy {
-    private String enemyName;
-    private String enemyDescription;
+    private final String enemyName;
+    private final String enemyDescription;
     private int enemyHealth;
-    private int enemyDamage;
-    private Room currentRoom;
-    private Weapon enemyWeapon;
+    private final Room currentRoom;
+    private final Weapon enemyWeapon;
 
-    public Enemy(String name, String description, int health, int damage, Room currentRoom) {
+    public Enemy(String name, String description, int health, Room currentRoom, Weapon enemyWeapon) {
         this.enemyName = name;
         this.enemyDescription = description;
         this.enemyHealth = health;
-        this.enemyDamage = damage;
         this.currentRoom = currentRoom;
         this.enemyWeapon = enemyWeapon;
-    }
-
-    public int getEnemyDamage() {
-        return enemyDamage;
     }
 
     public int getEnemyHealth() {
@@ -29,10 +21,6 @@ public class Enemy {
 
     public String getEnemyName() {
         return enemyName;
-    }
-
-    public String getEnemyDescription() {
-        return enemyDescription;
     }
 
     public void dealDamageToEnemy(int weaponDamage) {

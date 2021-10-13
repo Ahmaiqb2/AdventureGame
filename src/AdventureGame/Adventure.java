@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Adventure {
 
-    public static void main(String[] args) {
+    public static void adventure() {
 
         Room currentRoom = Map.createMap();
         Player player = new Player(50,currentRoom);
@@ -96,6 +96,13 @@ public class Adventure {
                     System.out.println("What do you want to equip?");
                     String equip = input.nextLine();
                     player.equip(equip);
+                    break;
+
+                case "attack":
+                    System.out.println("Who do you want to attack");
+                    String attack = input.nextLine();
+                    player.attack(attack);
+                    break;
             }
         }
     }
