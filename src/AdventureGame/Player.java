@@ -223,7 +223,7 @@ public class Player {
                 }
             } else {
                 System.out.println("You attack the enemy");
-                enemy.dealDamageToEnemy(getCurrentWeapon().getDamage());
+                enemy.damageToEnemy(getCurrentWeapon().getDamage());
                 System.out.println("Enemy hp: " + enemy.getEnemyHealth());
                 if (enemy.getEnemyHealth() <= 0){
                     System.out.println("The enemy is dead");

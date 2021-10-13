@@ -23,7 +23,7 @@ public class Enemy {
         return enemyName;
     }
 
-    public void dealDamageToEnemy(int weaponDamage) {
+    public void damageToEnemy(int weaponDamage) {
         this.enemyHealth = enemyHealth - weaponDamage;
 
     }

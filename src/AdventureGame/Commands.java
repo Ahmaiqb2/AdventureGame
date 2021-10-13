@@ -2,8 +2,6 @@ package AdventureGame;
 
 public class Commands {
 
-    private static Room[] rooms;
-
     public Commands(){
     }
 
