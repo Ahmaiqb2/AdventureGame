@@ -153,6 +153,7 @@ public class Player {
             System.out.println(Color.red + "you have nothing to eat" + Color.yellow);
         } else {
             health += food.getHealing();
+            removeFromInventory(food);
             System.out.println(Color.green + "You have eaten: " + foodName + Color.yellow);
             System.out.println(Color.green + "And gained: " + food.getHealing() + " - health" + Color.yellow);
 
@@ -160,7 +161,6 @@ public class Player {
     }
 
     public Food findFood(String foodName) {
-
         for (Item item : getInventoryy()) {
             if (item instanceof Food) {
                 return (Food) item;
@@ -178,9 +178,7 @@ public class Player {
             }
         }
         return null;
-
     }
-
 
     public void equip(String weaponName){
         Weapon requestedWeapon = findWeapon(weaponName);
